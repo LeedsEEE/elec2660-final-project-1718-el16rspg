@@ -20,10 +20,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // Defining unit arrays
-    self.unitOhm = @[@"nΩ",@"µΩ",@"mΩ",@"Ω",@"kΩ",@"MΩ",@"GΩ"];
-    self.unitAmp = @[@"nA",@"µA",@"mA",@"A",@"kA",@"MA",@"GA"];
-    self.unitVol = @[@"nV",@"µV",@"mV",@"V",@"kV",@"MV",@"GV"];
+    // Defining unit array
+    self.multiplierPrefix = @[@" n",@" µ",@" m",@"  ",@" k",@" M",@" G"];
     
     // Initialise Object of ohmsLawDataModel Class
     self.ohmsLawObject = [[ohmsLawDataModel alloc] init];
@@ -64,36 +62,54 @@
 #pragma mark - Functions
 
 
-// Function to set input label value depending on ohmsLawCalcPicker value selected by user;
+// Function to set Input Label, Input Unit Label, Output Calculation Type and Unit String depending on ohmsLawCalcPicker value selected by user;
 - (void) setOhmsLawInputLabel {
     if ([self.ohmsLawCalcPicker selectedRowInComponent:0] == 0) {
-        self.ohmsLawInput1Label.text = [NSString stringWithFormat: @"Current:"];
-        self.ohmsLawInput2Label.text = [NSString stringWithFormat: @"Resistance:"];
+        self.ohmsLawFormulaLabel.text = @"Formula: V = I x R";
+        self.ohmsLawOutputCalcType = @"Voltage";
+        self.ohmsLawOutputUnit = @"V";
+        self.ohmsLawInput1Label.text = @"Current:";
+        self.ohmsLawInput1UnitLabel.text = @"A";
+        self.ohmsLawInput2Label.text = @"Resistance:";
+        self.ohmsLawInput2UnitLabel.text = @"Ω";
+
     } else if ([self.ohmsLawCalcPicker selectedRowInComponent:0] == 1) {
-        self.ohmsLawInput1Label.text = [NSString stringWithFormat: @"Voltage:"];
-        self.ohmsLawInput2Label.text = [NSString stringWithFormat: @"Resistance:"];
+        self.ohmsLawFormulaLabel.text = @"Formula: I = V ÷ R";
+        self.ohmsLawOutputCalcType = @"Current";
+        self.ohmsLawOutputUnit = @"A";
+        self.ohmsLawInput1Label.text = @"Voltage:";
+        self.ohmsLawInput1UnitLabel.text = @"V";
+        self.ohmsLawInput2Label.text = @"Resistance:";
+        self.ohmsLawInput2UnitLabel.text = @"Ω";
+        
     } else {
-        self.ohmsLawInput1Label.text = [NSString stringWithFormat: @"Voltage:"];
-        self.ohmsLawInput2Label.text = [NSString stringWithFormat: @"Current:"];
+        self.ohmsLawFormulaLabel.text = @"Formula: R = V ÷ I";
+        self.ohmsLawOutputCalcType = @"Resistance";
+        self.ohmsLawOutputUnit = @"Ω";
+        self.ohmsLawInput1Label.text = @"Voltage:";
+        self.ohmsLawInput1UnitLabel.text = @"V";
+        self.ohmsLawInput2Label.text = @"Current:";
+        self.ohmsLawInput2UnitLabel.text = @"A";
+
     }
 }
 
-// Function to determine Output Label's appropriate multiplier units
+// Function to determine Output Label's appropriate Multiplier units
 - (void) setOhmsLawOutputLabel {
     if (self.ohmsLawObject.outputValue/pow(10,-9) >= 1  && self.ohmsLawObject.outputValue/pow(10,-9) < 1000) {
-        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"V = %.3f nV", self.ohmsLawObject.outputValue/pow(10,-9)];
+        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f n%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,-9), self.ohmsLawOutputUnit];
     } else if (self.ohmsLawObject.outputValue/pow(10,-6) >= 1  && self.ohmsLawObject.outputValue/pow(10,-6) < 1000) {
-        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"V = %.3f µV", self.ohmsLawObject.outputValue/pow(10,-6)];
+        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f µ%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,-6), self.ohmsLawOutputUnit];
     } else if (self.ohmsLawObject.outputValue/pow(10,-3) >= 1 && self.ohmsLawObject.outputValue/pow(10,-3) < 1000) {
-        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"V = %.3f mV", self.ohmsLawObject.outputValue/pow(10,-3)];
+        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f m%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,-3), self.ohmsLawOutputUnit];
     } else if (self.ohmsLawObject.outputValue/pow(10,3) >= 1 && self.ohmsLawObject.outputValue/pow(10,3) < 1000) {
-        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"V = %.3f kV", self.ohmsLawObject.outputValue/pow(10,3)];
+        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f k%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,3), self.ohmsLawOutputUnit];
     } else if (self.ohmsLawObject.outputValue/pow(10,6) >= 1 && self.ohmsLawObject.outputValue/pow(10,6) < 1000) {
-        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"V = %.3f MV", self.ohmsLawObject.outputValue/pow(10,6)];
+        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f M%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,6), self.ohmsLawOutputUnit];
     } else if (self.ohmsLawObject.outputValue/pow(10,9) >= 1) {
-        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"V = %.3f GV", self.ohmsLawObject.outputValue/pow(10,9)];
+        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f G%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,9), self.ohmsLawOutputUnit];
     } else {
-        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"V = %.3f V", self.ohmsLawObject.outputValue];
+        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f %@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue, self.ohmsLawOutputUnit];
     }
 }
 
@@ -144,9 +160,9 @@
     } else {
         if (!pickerLabel) {
             pickerLabel = [[UILabel alloc] init];
-            pickerLabel.font = [UIFont fontWithName: @"Sketch Block" size: 16];
+            pickerLabel.font = [UIFont fontWithName: @"Chalkboard SE" size: 16];
             pickerLabel.textColor = [UIColor blackColor];
-            pickerLabel.textAlignment = NSTextAlignmentCenter;
+            pickerLabel.textAlignment = NSTextAlignmentLeft;
         }
     }
     
@@ -159,18 +175,8 @@
         } else {
             pickerLabel.text = @"Calculate Resistance";
         }
-    } else if ([pickerView isEqual: self.ohmsLawInput1Multiplier]) {
-        if ([self.ohmsLawCalcPicker selectedRowInComponent:0] == 0) {
-            pickerLabel.text = self.unitAmp[row];
-        } else {
-            pickerLabel.text = self.unitVol[row];
-        }
     } else {
-        if ([self.ohmsLawCalcPicker selectedRowInComponent:0] == 2) {
-            pickerLabel.text = self.unitAmp[row];
-        } else {
-            pickerLabel.text = self.unitOhm[row];
-        }
+            pickerLabel.text = self.multiplierPrefix[row];
     }
     return pickerLabel;
 }

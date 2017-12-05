@@ -13,22 +13,24 @@
 
 @property (strong, nonatomic) ohmsLawDataModel *ohmsLawObject;
 
+@property (strong, nonatomic) IBOutlet UILabel *ohmsLawFormulaLabel;
 @property (strong, nonatomic) IBOutlet UIPickerView *ohmsLawCalcPicker;
-
-@property (strong, nonatomic) IBOutlet UITextField *ohmsLawInput1TextField;
-@property (strong, nonatomic) IBOutlet UITextField *ohmsLawInput2TextField;
-
-@property (strong, nonatomic) IBOutlet UIPickerView *ohmsLawInput1Multiplier;
-@property (strong, nonatomic) IBOutlet UIPickerView *ohmsLawInput2Multiplier;
-
-@property (strong, nonatomic) IBOutlet UILabel *ohmsLawOutputLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *ohmsLawInput1Label;
 @property (strong, nonatomic) IBOutlet UILabel *ohmsLawInput2Label;
+@property (strong, nonatomic) IBOutlet UITextField *ohmsLawInput1TextField;
+@property (strong, nonatomic) IBOutlet UITextField *ohmsLawInput2TextField;
+@property (strong, nonatomic) IBOutlet UIPickerView *ohmsLawInput1Multiplier;
+@property (strong, nonatomic) IBOutlet UIPickerView *ohmsLawInput2Multiplier;
+@property (strong, nonatomic) IBOutlet UILabel *ohmsLawInput1UnitLabel;
+@property (strong, nonatomic) IBOutlet UILabel *ohmsLawInput2UnitLabel;
 
-@property NSArray *unitOhm;
-@property NSArray *unitAmp;
-@property NSArray *unitVol;
+@property (strong, nonatomic) IBOutlet UILabel *ohmsLawOutputLabel;
+
+@property NSArray *multiplierPrefix;
+@property (strong, nonatomic) NSString *ohmsLawOutputCalcType;
+@property (strong, nonatomic) NSString *ohmsLawOutputUnit;
+
 
 
 - (IBAction)ohmsLawCalcButtonPressed:(UIButton *)sender;

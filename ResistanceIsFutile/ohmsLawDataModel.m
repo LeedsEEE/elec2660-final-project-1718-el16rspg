@@ -48,7 +48,11 @@
     }
     
     // Calculates Final Equivalent Resistance of R1, R2, and R3
-    self.outputValue = self.input1Value * self.input2Value;
+    if (self.calcType == 0) {
+        self.outputValue = self.input1Value * self.input2Value;
+    } else {
+        self.outputValue = self.input1Value / self.input2Value;
+    }
 }
 
 @end

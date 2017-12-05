@@ -273,7 +273,7 @@
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resistance (Ω):" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tin-rX-HwP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voltage:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tin-rX-HwP">
                                 <rect key="frame" x="16" y="291" width="150" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="JXR-EP-hFO"/>
@@ -284,7 +284,7 @@
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current (A):" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iz-gA-WeL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resistance:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iz-gA-WeL">
                                 <rect key="frame" x="16" y="346" width="150" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="6tL-PD-6TT"/>
@@ -377,7 +377,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
+                                        <integer key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </pickerView>
@@ -390,7 +390,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
+                                        <integer key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </pickerView>
@@ -431,6 +431,28 @@
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ω" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiO-69-3Dt">
+                                <rect key="frame" x="323" y="341" width="20" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="ClP-TK-c6c"/>
+                                    <constraint firstAttribute="width" constant="20" id="hCj-E6-qjQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="freeversionSketchBlock-Bold" family="Sketch Block" pointSize="16"/>
+                                <color key="textColor" red="0.29844433069229126" green="0.29844433069229126" blue="0.29844433069229126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5B-mS-QxH">
+                                <rect key="frame" x="323" y="286.5" width="20" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="0lS-or-cFy"/>
+                                    <constraint firstAttribute="width" constant="20" id="RYE-go-ydb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="freeversionSketchBlock-Bold" family="Sketch Block" pointSize="16"/>
+                                <color key="textColor" red="0.29844433069999998" green="0.29844433069999998" blue="0.29844433069999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.24387603999999999" green="0.44137430189999999" blue="0.0031150702849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -448,9 +470,11 @@
                             <constraint firstItem="6xf-Hp-Y9V" firstAttribute="centerX" secondItem="ypC-jT-OUt" secondAttribute="centerX" id="OmP-eJ-rIU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WGe-hA-98d" secondAttribute="trailing" constant="1" id="PJn-Ez-yl5"/>
                             <constraint firstItem="9xY-8s-brj" firstAttribute="leading" secondItem="RYn-xc-fGJ" secondAttribute="trailing" constant="8" id="PKa-7E-wgK"/>
+                            <constraint firstItem="b5B-mS-QxH" firstAttribute="leading" secondItem="9xY-8s-brj" secondAttribute="trailing" constant="-16" id="TRB-Zw-IJj"/>
                             <constraint firstItem="9xY-8s-brj" firstAttribute="top" secondItem="WGe-hA-98d" secondAttribute="bottom" constant="22" id="U83-DU-7zD"/>
                             <constraint firstItem="RYn-xc-fGJ" firstAttribute="top" secondItem="WGe-hA-98d" secondAttribute="bottom" constant="24" id="UmO-4F-prG"/>
                             <constraint firstItem="9t9-Hf-vbN" firstAttribute="top" secondItem="AOb-Oc-qlz" secondAttribute="bottom" constant="20" id="X3Z-Ht-GPV"/>
+                            <constraint firstItem="b5B-mS-QxH" firstAttribute="top" secondItem="9xY-8s-brj" secondAttribute="bottom" constant="-32.5" id="ZaQ-wB-xHf"/>
                             <constraint firstItem="HdM-h1-Xdz" firstAttribute="top" secondItem="9vv-Lj-pJD" secondAttribute="bottom" constant="25" id="aDf-Eq-Dzq"/>
                             <constraint firstItem="9vv-Lj-pJD" firstAttribute="centerX" secondItem="ypC-jT-OUt" secondAttribute="centerX" id="dLN-35-Ydx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AOb-Oc-qlz" secondAttribute="trailing" constant="20" id="eet-uK-TVz"/>
@@ -458,8 +482,10 @@
                             <constraint firstAttribute="leadingMargin" secondItem="tin-rX-HwP" secondAttribute="leading" id="fG4-Y6-uIc"/>
                             <constraint firstItem="Mpm-Qm-wQ2" firstAttribute="top" secondItem="6xf-Hp-Y9V" secondAttribute="bottom" constant="10" id="fuj-HP-f86"/>
                             <constraint firstItem="hAi-CX-05q" firstAttribute="leading" secondItem="xZZ-Fe-bHw" secondAttribute="trailing" constant="7" id="gWp-dZ-ErU"/>
+                            <constraint firstItem="DiO-69-3Dt" firstAttribute="top" secondItem="hAi-CX-05q" secondAttribute="bottom" constant="-32.5" id="iMt-EI-9rg"/>
                             <constraint firstItem="RYn-xc-fGJ" firstAttribute="leading" secondItem="tin-rX-HwP" secondAttribute="trailing" constant="10" id="j3U-oS-81b"/>
                             <constraint firstItem="xZZ-Fe-bHw" firstAttribute="top" secondItem="RYn-xc-fGJ" secondAttribute="bottom" constant="25" id="lse-fR-BS0"/>
+                            <constraint firstItem="DiO-69-3Dt" firstAttribute="leading" secondItem="hAi-CX-05q" secondAttribute="trailing" constant="-16" id="ne5-fu-l4p"/>
                             <constraint firstItem="xZZ-Fe-bHw" firstAttribute="leading" secondItem="9iz-gA-WeL" secondAttribute="trailing" constant="11" id="pqj-Cq-22B"/>
                             <constraint firstItem="u6w-bu-PIU" firstAttribute="top" secondItem="HdM-h1-Xdz" secondAttribute="bottom" constant="-70" id="seZ-S2-XaL"/>
                             <constraint firstItem="u6w-bu-PIU" firstAttribute="centerX" secondItem="ypC-jT-OUt" secondAttribute="centerX" id="t47-AG-ttG"/>
@@ -470,12 +496,15 @@
                     </view>
                     <connections>
                         <outlet property="ohmsLawCalcPicker" destination="GRv-WN-qP9" id="wBx-Mq-DEg"/>
+                        <outlet property="ohmsLawFormulaLabel" destination="Mpm-Qm-wQ2" id="F4C-51-adN"/>
                         <outlet property="ohmsLawInput1Label" destination="tin-rX-HwP" id="s7G-VL-Bim"/>
                         <outlet property="ohmsLawInput1Multiplier" destination="9xY-8s-brj" id="PlH-Gj-JbP"/>
                         <outlet property="ohmsLawInput1TextField" destination="RYn-xc-fGJ" id="mhz-7R-EfA"/>
+                        <outlet property="ohmsLawInput1UnitLabel" destination="b5B-mS-QxH" id="d1Z-sA-jmZ"/>
                         <outlet property="ohmsLawInput2Label" destination="9iz-gA-WeL" id="0QW-Le-xQY"/>
                         <outlet property="ohmsLawInput2Multiplier" destination="hAi-CX-05q" id="CEz-Mz-Ous"/>
                         <outlet property="ohmsLawInput2TextField" destination="xZZ-Fe-bHw" id="FI5-Y1-iiS"/>
+                        <outlet property="ohmsLawInput2UnitLabel" destination="DiO-69-3Dt" id="VZo-6g-oo1"/>
                         <outlet property="ohmsLawOutputLabel" destination="u6w-bu-PIU" id="66Z-VO-Q8a"/>
                     </connections>
                 </viewController>

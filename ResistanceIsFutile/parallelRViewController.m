@@ -61,19 +61,19 @@
 // Function to determine Output Label's appropriate multiplier units
 - (void) setParallelROutputLabel {
     if (self.parallelRObject.RFinalValue/pow(10,-9) >= 1  && self.parallelRObject.RFinalValue/pow(10,-9) < 1000) {
-        self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f nΩ", self.parallelRObject.RFinalValue/pow(10,-9)];
+        self.parallelROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f nΩ", self.parallelRObject.RFinalValue/pow(10,-9)];
     } else if (self.parallelRObject.RFinalValue/pow(10,-6) >= 1  && self.parallelRObject.RFinalValue/pow(10,-6) < 1000) {
-        self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f µΩ", self.parallelRObject.RFinalValue/pow(10,-6)];
+        self.parallelROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f µΩ", self.parallelRObject.RFinalValue/pow(10,-6)];
     } else if (self.parallelRObject.RFinalValue/pow(10,-3) >= 1 && self.parallelRObject.RFinalValue/pow(10,-3) < 1000) {
-        self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f mΩ", self.parallelRObject.RFinalValue/pow(10,-3)];
+        self.parallelROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f mΩ", self.parallelRObject.RFinalValue/pow(10,-3)];
     } else if (self.parallelRObject.RFinalValue/pow(10,3) >= 1 && self.parallelRObject.RFinalValue/pow(10,3) < 1000) {
-        self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f kΩ", self.parallelRObject.RFinalValue/pow(10,3)];
+        self.parallelROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f kΩ", self.parallelRObject.RFinalValue/pow(10,3)];
     } else if (self.parallelRObject.RFinalValue/pow(10,6) >= 1 && self.parallelRObject.RFinalValue/pow(10,6) < 1000) {
-        self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f MΩ", self.parallelRObject.RFinalValue/pow(10,6)];
+        self.parallelROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f MΩ", self.parallelRObject.RFinalValue/pow(10,6)];
     } else if (self.parallelRObject.RFinalValue/pow(10,9) >= 1) {
-        self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f GΩ", self.parallelRObject.RFinalValue/pow(10,9)];
+        self.parallelROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f GΩ", self.parallelRObject.RFinalValue/pow(10,9)];
     } else {
-        self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f Ω", self.parallelRObject.RFinalValue];
+        self.parallelROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f Ω", self.parallelRObject.RFinalValue];
     }
 }
 
@@ -83,21 +83,21 @@
     
     if (self.parallelRObject.R1Value == 0 && self.parallelRObject.R2Value == 0) {
         
-        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle:@"Caution" message:@"You have chosen your R1 and R2 values as 0 Ω. This will always produce a total equivalent resistance, R, of 0 Ω." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle:@"Caution" message:@"You have chosen your R1 and R2 values as 0 Ω. This will always produce a total resistance, R, of 0 Ω. R3 may be left blank or entered as 0 if you only want to calculate the total resistance of two resistors." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
         [textFieldLimitAlert addAction:ok];
         [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
         
     } else if (self.parallelRObject.R1Value == 0) {
         
-        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle:@"Caution" message:@"You have chosen your R1 value as 0 Ω. This will always produce a total equivalent resistance, R, of 0 Ω." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle:@"Caution" message:@"You have chosen your R1 value as 0 Ω. This will always produce a total resistance, R, of 0 Ω. R3 may be left blank or entered as 0 if you only want to calculate the total resistance of two resistors." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
         [textFieldLimitAlert addAction:ok];
         [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
         
     } else if (self.parallelRObject.R2Value == 0) {
         
-        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle:@"Caution" message:@"You have chosen your R2 value as 0 Ω. This will always produce a total equivalent resistance, R, of 0 Ω." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle:@"Caution" message:@"You have chosen your R2 value as 0 Ω. This will always produce a total resistance, R, of 0 Ω. R3 may be left blank or entered as 0 if you only want to calculate the total resistance of two resistors." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
         [textFieldLimitAlert addAction:ok];
         [self presentViewController:textFieldLimitAlert animated:YES completion:nil];

@@ -28,21 +28,18 @@
                                     <constraint firstAttribute="width" constant="350" id="zI5-kY-0vw"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed by:  Rohan Garg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXa-RM-NG3">
-                                <rect key="frame" x="67" y="565" width="240.5" height="22.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22.5" id="1un-mw-mJT"/>
-                                    <constraint firstAttribute="width" constant="240.5" id="tIk-Ca-oFO"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed by: Rohan Garg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fir-GU-SUq">
+                                <rect key="frame" x="56" y="533" width="262" height="26"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.24238485608354776" green="0.4398001269035533" blue="0.003778458100065025" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jXa-RM-NG3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Vuq-TO-aNp"/>
-                            <constraint firstItem="jXa-RM-NG3" firstAttribute="top" secondItem="g3B-0e-EDV" secondAttribute="bottom" constant="138" id="jHX-ZN-2Tc"/>
+                            <constraint firstItem="fir-GU-SUq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5Dp-Oc-KfJ"/>
+                            <constraint firstItem="fir-GU-SUq" firstAttribute="top" secondItem="g3B-0e-EDV" secondAttribute="bottom" constant="106" id="AJM-Zc-pdG"/>
                             <constraint firstItem="g3B-0e-EDV" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="57" id="nfo-3h-fWY"/>
                             <constraint firstItem="g3B-0e-EDV" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="x1X-wW-dE9"/>
                         </constraints>

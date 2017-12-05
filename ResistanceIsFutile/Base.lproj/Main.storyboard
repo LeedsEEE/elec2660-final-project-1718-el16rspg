@@ -50,7 +50,7 @@
                                     <constraint firstAttribute="height" constant="370" id="Ygd-fH-hwV"/>
                                     <constraint firstAttribute="width" constant="260" id="mf9-nc-qp3"/>
                                 </constraints>
-                                <mutableString key="text">1) Use the picker placed immediately below the formula to determine the unknown quantity to be calculated.  2) All resistance values are in ohms (Ω), voltage values in volts (V) &amp; current values in amperes (A) by default. You may select the appropriate multiplier value by scrolling through the pickers placed adjacently.  3) You may enter up to 5 digits per input text field. Do not set any values to 0.</mutableString>
+                                <string key="text">1) Use the picker placed immediately below the formula to determine the unknown quantity to be calculated.  2) All resistance values are in ohms (Ω), voltage values in volts (V) &amp; current values in amperes (A) by default. You may select the appropriate multiplier value by scrolling through the pickers placed adjacently.  3) You may enter up to 5 digits per input text field. Do not set any values to 0.</string>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -470,8 +470,10 @@
                     </view>
                     <connections>
                         <outlet property="ohmsLawCalcPicker" destination="GRv-WN-qP9" id="wBx-Mq-DEg"/>
+                        <outlet property="ohmsLawInput1Label" destination="tin-rX-HwP" id="s7G-VL-Bim"/>
                         <outlet property="ohmsLawInput1Multiplier" destination="9xY-8s-brj" id="PlH-Gj-JbP"/>
                         <outlet property="ohmsLawInput1TextField" destination="RYn-xc-fGJ" id="mhz-7R-EfA"/>
+                        <outlet property="ohmsLawInput2Label" destination="9iz-gA-WeL" id="0QW-Le-xQY"/>
                         <outlet property="ohmsLawInput2Multiplier" destination="hAi-CX-05q" id="CEz-Mz-Ous"/>
                         <outlet property="ohmsLawInput2TextField" destination="xZZ-Fe-bHw" id="FI5-Y1-iiS"/>
                         <outlet property="ohmsLawOutputLabel" destination="u6w-bu-PIU" id="66Z-VO-Q8a"/>
@@ -1330,7 +1332,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Potential Divider Calculator" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBu-aP-rOo">
-                                <rect key="frame" x="32" y="40" width="311.5" height="69"/>
+                                <rect key="frame" x="32.5" y="40" width="311.5" height="69"/>
                                 <fontDescription key="fontDescription" name="freeversionSketchBlock-Bold" family="Sketch Block" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1533,7 +1535,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Potential Divider Calculator" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34T-cg-l3C">
-                                <rect key="frame" x="32.5" y="40" width="311.5" height="69"/>
+                                <rect key="frame" x="32" y="40" width="311.5" height="69"/>
                                 <fontDescription key="fontDescription" name="freeversionSketchBlock-Bold" family="Sketch Block" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1562,7 +1564,7 @@
                                     <constraint firstAttribute="height" constant="300" id="2hO-ml-Z4X"/>
                                     <constraint firstAttribute="width" constant="260" id="kpR-tr-AO1"/>
                                 </constraints>
-                                <mutableString key="text">1) You may enter up to 10 digits per input text field.  2) All resistance values are in ohms (Ω) and voltage values are in volts (V) by default. You may select the appropriate multiplier value by scrolling through the pickers placed adjacently.  3) R1 and R2 should not be set to 0.</mutableString>
+                                <string key="text">1) You may enter up to 10 digits per input text field.  2) All resistance values are in ohms (Ω) and voltage values are in volts (V) by default. You may select the appropriate multiplier value by scrolling through the pickers placed adjacently.  3) R1 and R2 should not be set to 0.</string>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -1611,7 +1613,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parallel Resistance  Calculator" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7M-MN-6hD">
-                                <rect key="frame" x="5.5" y="40" width="365" height="69"/>
+                                <rect key="frame" x="5" y="40" width="365" height="69"/>
                                 <fontDescription key="fontDescription" name="freeversionSketchBlock-Bold" family="Sketch Block" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1640,7 +1642,7 @@
                                     <constraint firstAttribute="height" constant="375" id="YCT-DM-6O0"/>
                                     <constraint firstAttribute="width" constant="260" id="Zro-Mt-3SO"/>
                                 </constraints>
-                                <mutableString key="text">1) You may enter up to 10 digits per input text field.  2) All resistance values are in ohms (Ω) by default. You may select the appropriate multiplier value by scrolling through the pickers placed adjacently.  3) If you do not require an R3 value, please leave the adjacent field blank or enter 0. Note: If R1 and R2 are set to 0Ω, the total equivalent resistance, R, will be 0Ω.</mutableString>
+                                <string key="text">1) You may enter up to 10 digits per input text field.  2) All resistance values are in ohms (Ω) by default. You may select the appropriate multiplier value by scrolling through the pickers placed adjacently.  3) If you do not require an R3 value, please leave the adjacent field blank or enter 0. Note: If R1 and R2 are set to 0Ω, the total equivalent resistance, R, will be 0Ω.</string>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>

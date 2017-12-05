@@ -23,10 +23,14 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *ohmsLawOutputLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *ohmsLawInput1Label;
+@property (strong, nonatomic) IBOutlet UILabel *ohmsLawInput2Label;
+
 
 - (IBAction)ohmsLawCalcButtonPressed:(UIButton *)sender;
 - (IBAction)hideKeyboardButton:(UIButton *)sender;
 - (void) setOhmsLawOutputLabel; // Function to set output label value after accounting for the unit multiplier
+- (void) setOhmsLawInputLabel; // Function to set input label value depending on ohmsLawCalcPicker value selected by user;
 
 
 @end

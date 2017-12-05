@@ -12,7 +12,6 @@
 {
 
 }
-
 @end
 
 @implementation ohmsLawViewController
@@ -20,6 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // Defining unit arrays
+    self.unitOhm = @[@"nΩ",@"µΩ",@"mΩ",@"Ω",@"kΩ",@"MΩ",@"GΩ"];
+    self.unitAmp = @[@"nA",@"µA",@"mA",@"A",@"kA",@"MA",@"GA"];
+    self.unitVol = @[@"nV",@"µV",@"mV",@"V",@"kV",@"MV",@"GV"];
     
     // Initialise Object of ohmsLawDataModel Class
     self.ohmsLawObject = [[ohmsLawDataModel alloc] init];
@@ -140,7 +144,7 @@
     } else {
         if (!pickerLabel) {
             pickerLabel = [[UILabel alloc] init];
-            pickerLabel.font = [UIFont fontWithName: @"Sketch Block" size: 10];
+            pickerLabel.font = [UIFont fontWithName: @"Sketch Block" size: 16];
             pickerLabel.textColor = [UIColor blackColor];
             pickerLabel.textAlignment = NSTextAlignmentCenter;
         }
@@ -155,106 +159,20 @@
         } else {
             pickerLabel.text = @"Calculate Resistance";
         }
-        return pickerLabel;
-/*
-    } else {
-        if (row == 0) {
-            pickerLabel.text = @"nA";
-        } else if (row == 1) {
-            pickerLabel.text = @"µA";
-        } else if (row == 2) {
-            pickerLabel.text = @"mA";
-        } else if (row == 3) {
-            pickerLabel.text = @"A";
-        } else if (row == 4) {
-            pickerLabel.text = @"kA";
-        } else if (row == 5) {
-            pickerLabel.text = @"MA";
-        } else {
-            pickerLabel.text = @"GA";
-        }
-        return pickerLabel;
-    }
-}
- */
-
     } else if ([pickerView isEqual: self.ohmsLawInput1Multiplier]) {
-        
         if ([self.ohmsLawCalcPicker selectedRowInComponent:0] == 0) {
-            if (row == 0) {
-                pickerLabel.text = @"nA";
-            } else if (row == 1) {
-                pickerLabel.text = @"µA";
-            } else if (row == 2) {
-                pickerLabel.text = @"mA";
-            } else if (row == 3) {
-                pickerLabel.text = @"A";
-            } else if (row == 4) {
-                pickerLabel.text = @"kA";
-            } else if (row == 5) {
-                pickerLabel.text = @"MA";
-            } else {
-                pickerLabel.text = @"GA";
-            }
-            return pickerLabel;
+            pickerLabel.text = self.unitAmp[row];
         } else {
-            if (row == 0) {
-                pickerLabel.text = @"nV";
-            } else if (row == 1) {
-                pickerLabel.text = @"µV";
-            } else if (row == 2) {
-                pickerLabel.text = @"mV";
-            } else if (row == 3) {
-                pickerLabel.text = @"V";
-            } else if (row == 4) {
-                pickerLabel.text = @"kV";
-            } else if (row == 5) {
-                pickerLabel.text = @"MV";
-            } else {
-                pickerLabel.text = @"GV";
-            }
-            return pickerLabel;
+            pickerLabel.text = self.unitVol[row];
         }
-        //return pickerLabel;
-        
     } else {
         if ([self.ohmsLawCalcPicker selectedRowInComponent:0] == 2) {
-            if (row == 0) {
-                pickerLabel.text = @"nA";
-            } else if (row == 1) {
-                pickerLabel.text = @"µA";
-            } else if (row == 2) {
-                pickerLabel.text = @"mA";
-            } else if (row == 3) {
-                pickerLabel.text = @"A";
-            } else if (row == 4) {
-                pickerLabel.text = @"kA";
-            } else if (row == 5) {
-                pickerLabel.text = @"MA";
-            } else {
-                pickerLabel.text = @"GA";
-            }
-            return pickerLabel;
+            pickerLabel.text = self.unitAmp[row];
         } else {
-            if (row == 0) {
-                pickerLabel.text = @"nΩ";
-            } else if (row == 1) {
-                pickerLabel.text = @"µΩ";
-            } else if (row == 2) {
-                pickerLabel.text = @"mΩ";
-            } else if (row == 3) {
-                pickerLabel.text = @"Ω";
-            } else if (row == 4) {
-                pickerLabel.text = @"kΩ";
-            } else if (row == 5) {
-                pickerLabel.text = @"MΩ";
-            } else {
-                pickerLabel.text = @"GΩ";
-            }
-            return pickerLabel;
+            pickerLabel.text = self.unitOhm[row];
         }
-        //return pickerLabel;
     }
+    return pickerLabel;
 }
 
 // Matching Row Index with Column to access Value
@@ -262,9 +180,9 @@
     self.ohmsLawObject.calcType = [self.ohmsLawCalcPicker selectedRowInComponent:0];
     self.ohmsLawObject.input1Multiplier = [self.ohmsLawInput1Multiplier selectedRowInComponent:0];
     self.ohmsLawObject.input2Multiplier = [self.ohmsLawInput2Multiplier selectedRowInComponent:0];
+    
+    // Calling function to change Ohms Law Input Label
     (void) [self setOhmsLawInputLabel];
-    
-    
 }
 
 

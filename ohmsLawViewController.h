@@ -26,6 +26,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *ohmsLawInput1Label;
 @property (strong, nonatomic) IBOutlet UILabel *ohmsLawInput2Label;
 
+@property NSArray *unitOhm;
+@property NSArray *unitAmp;
+@property NSArray *unitVol;
+
 
 - (IBAction)ohmsLawCalcButtonPressed:(UIButton *)sender;
 - (IBAction)hideKeyboardButton:(UIButton *)sender;

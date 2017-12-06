@@ -27,5 +27,6 @@
 - (IBAction)seriesRCalcButtonPressed:(UIButton *)sender;
 - (IBAction)hideKeyboardButton:(UIButton *)sender;
 - (void)setSeriesROutputLabel; // Function to set output label value after accounting for the unit multiplier
+- (void) setBackground; // Function to set Background Image
 
 @end

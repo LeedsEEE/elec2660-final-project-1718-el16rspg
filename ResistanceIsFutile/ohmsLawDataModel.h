@@ -20,5 +20,4 @@
 
 -(void) calcFinalValue; // Method to calculate output value
 
-
 @end

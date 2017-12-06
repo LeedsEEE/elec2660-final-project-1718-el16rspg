@@ -25,6 +25,8 @@
  The following images were sourced from the Internet (CC0 Creative Commons, Free for commercial use, No attribution required)
  1) Scroll.png - sourced from https://pixabay.com/en/scroll-old-blank-brown-paper-310783/
  2) Scroll2.png - sourced from https://pixabay.com/p-34606/?no_redirect
+ 3) blackboard 16_9_v2 - modified using MS Paint after sourcing from https://pixabay.com/p-307799/?no_redirect
+ 4) blackboard2 (not used) - modified using MS Paint after sourcing from https://pixabay.com/p-307799/?no_redirect
  
  The following font was sourced from the Internet (Free for personal use)
  1) Sketch_Block.ttf - sourced from https://www.dafont.com/sketch-block.font
@@ -36,6 +38,7 @@
 
 @interface ViewController : UIViewController
 
+- (void) setBackground; // Function to set Background Image
 
 @end
 

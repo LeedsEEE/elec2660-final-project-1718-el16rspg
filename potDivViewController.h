@@ -10,4 +10,6 @@
 
 @interface potDivViewController : UIViewController
 
+- (void) setBackground; // Function to set Background Image
+
 @end

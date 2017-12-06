@@ -18,6 +18,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // Calls Function to set Background image
+    (void) [self setBackground];
+    
     // Initialise Object of seriesRDataModel Class
     self.seriesRObject = [[seriesRDataModel alloc] init];
     
@@ -58,6 +61,19 @@
 
 
 #pragma mark - Functions
+
+// Function to set Background image
+// Source: https://stackoverflow.com/questions/38250333/ios-preparing-background-images-for-applications
+- (void) setBackground {
+    UIImage *bgImage = [UIImage imageNamed:@"blackboard 16_9_v2.png"];
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    UIGraphicsBeginImageContextWithOptions(screenSize, NO, 0.f);
+    [bgImage drawInRect:CGRectMake(0.f, 0.f, screenSize.width, screenSize.height)];
+    UIImage * resultImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    UIColor *backgroundColor = [UIColor colorWithPatternImage:resultImage];
+    self.view.backgroundColor = backgroundColor;
+}
 
 // Function to determine Output Label's appropriate multiplier units
 - (void) setSeriesROutputLabel {

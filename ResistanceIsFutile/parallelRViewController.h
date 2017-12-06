@@ -27,7 +27,8 @@
 - (IBAction)parallelRCalcButtonPressed:(UIButton *)sender;
 - (IBAction)hideKeyboardButton:(UIButton *)sender;
 - (void)setParallelROutputLabel; // Function to set output label value after accounting for the unit multiplier
-- (void)cautionR; // Function to Display Alert if R1 and/or R2 are set to 0
+- (void) cautionR; // Function to Display Alert if R1 and/or R2 are set to 0
+- (void) setBackground; // Function to set Background Image
 
 
 

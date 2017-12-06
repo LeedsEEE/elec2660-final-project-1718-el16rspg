@@ -9,9 +9,6 @@
 #import "ohmsLawViewController.h"
 
 @interface ohmsLawViewController ()
-{
-
-}
 @end
 
 @implementation ohmsLawViewController
@@ -20,11 +17,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // Defining unit array
-    self.multiplierPrefix = @[@" n",@" µ",@" m",@"  ",@" k",@" M",@" G"];
+    // Calls Function to set Background image
+    (void) [self setBackground];
     
     // Initialise Object of ohmsLawDataModel Class
     self.ohmsLawObject = [[ohmsLawDataModel alloc] init];
+    
+    // Defining unit array - used in ohmsLawInput1Multiplier & ohmsLawInput2Multiplier pickers
+    self.multiplierPrefix = @[@" n",@" µ",@" m",@"  ",@" k",@" M",@" G"];
     
     // Display Decimal Pad Keyboard Type
     self.ohmsLawInput1TextField.keyboardType = UIKeyboardTypeDecimalPad;
@@ -42,12 +42,12 @@
     self.ohmsLawInput2Multiplier.dataSource = self;
     self.ohmsLawInput2Multiplier.delegate = self;
     
-    // Assigning Default Row to be displayed for PickerView;
+    // Assigning Default Row (V, A, or Ω) to be displayed for PickerView;
     [self.ohmsLawInput1Multiplier selectRow:3 inComponent:0 animated:NO];
     [self.ohmsLawInput2Multiplier selectRow:3 inComponent:0 animated:NO];
     [self.ohmsLawCalcPicker selectRow:1 inComponent:0 animated:NO];
     
-    // Selecting Default Row to be used for calculations when User does NOT scroll the Picker
+    // Selecting Default Row (V, A, or Ω) to be used for calculations when User does NOT scroll the Picker
     [self pickerView:self.ohmsLawInput1Multiplier didSelectRow:3 inComponent:0];
     [self pickerView:self.ohmsLawInput2Multiplier didSelectRow:3 inComponent:0];
     [self pickerView:self.ohmsLawCalcPicker didSelectRow:1 inComponent:0];
@@ -61,8 +61,20 @@
 
 #pragma mark - Functions
 
+// Function to set Background image
+// Source: https://stackoverflow.com/questions/38250333/ios-preparing-background-images-for-applications
+- (void) setBackground {
+    UIImage *bgImage = [UIImage imageNamed:@"blackboard 16_9_v2.png"];
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    UIGraphicsBeginImageContextWithOptions(screenSize, NO, 0.f);
+    [bgImage drawInRect:CGRectMake(0.f, 0.f, screenSize.width, screenSize.height)];
+    UIImage * resultImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    UIColor *backgroundColor = [UIColor colorWithPatternImage:resultImage];
+    self.view.backgroundColor = backgroundColor;
+}
 
-// Function to set Input Label, Input Unit Label, Output Calculation Type and Unit String depending on ohmsLawCalcPicker value selected by user;
+// Function to set Formula, Output Calculation Type and Units, Input Label, Input Unit Label depending on ohmsLawCalcPicker value selected by user;
 - (void) setOhmsLawInputLabel {
     if ([self.ohmsLawCalcPicker selectedRowInComponent:0] == 0) {
         self.ohmsLawFormulaLabel.text = @"Formula: V = I x R";
@@ -94,7 +106,7 @@
     }
 }
 
-// Function to determine Output Label's appropriate Multiplier units
+// Function to determine Output Label's appropriate Multiplier units. The function divides the output value by 10^-9 to 10^9 to determine if the result is between 1 and 1000. If so, the divisor is the multiplier unit and the result is the output label value.
 - (void) setOhmsLawOutputLabel {
     if (self.ohmsLawObject.outputValue/pow(10,-9) >= 1  && self.ohmsLawObject.outputValue/pow(10,-9) < 1000) {
         self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f n%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,-9), self.ohmsLawOutputUnit];
@@ -113,6 +125,35 @@
     }
 }
 
+/* Function to:
+ 1) Display Alert if both, Voltage and Resistance or Voltage and Current, is set to 0 when calculating Current or Resistance, respectively
+ 2) Display Alert if Resistance or Current is set to 0 when calculating Current or Resistance, respectively */
+- (void) cautionR {
+    
+    if (([self.ohmsLawCalcPicker selectedRowInComponent:0] == 1 || [self.ohmsLawCalcPicker selectedRowInComponent:0] == 2) && (self.ohmsLawObject.input1Value == 0 && self.ohmsLawObject.input2Value == 0)) {
+        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle: @"Caution" message: [NSString stringWithFormat:@"You have chosen your Voltage as 0 V and %@ as 0 %@. This will always produce an undefined result that is not a number.", [self.ohmsLawInput2Label.text substringToIndex:self.ohmsLawInput2Label.text.length-1], self.ohmsLawInput2UnitLabel.text] preferredStyle:UIAlertControllerStyleAlert];
+        
+        // Note (see above) : [self.ohmsLawInput2Label.text substringToIndex:self.ohmsLawInput2Label.text.length-1]
+        // Used to remove ":" at the end of the input2Label
+        // Source: https://stackoverflow.com/questions/1082178/objective-c-remove-last-character-from-string
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+        [textFieldLimitAlert addAction:ok];
+        [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
+    }
+    
+    if (([self.ohmsLawCalcPicker selectedRowInComponent:0] == 1 || [self.ohmsLawCalcPicker selectedRowInComponent:0] == 2) && self.ohmsLawObject.input2Value == 0) {
+        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle:@"Caution" message:[NSString stringWithFormat:@"You have chosen your %@ as 0 %@. This will always produce an infinite %@.", [self.ohmsLawInput2Label.text substringToIndex:self.ohmsLawInput2Label.text.length-1], self.ohmsLawInput2UnitLabel.text, self.ohmsLawOutputCalcType] preferredStyle:UIAlertControllerStyleAlert];
+        
+        // Note (see above) : [self.ohmsLawInput2Label.text substringToIndex:self.ohmsLawInput2Label.text.length-1]
+        // Used to remove ":" at the end of the input2Label
+        // Source: https://stackoverflow.com/questions/1082178/objective-c-remove-last-character-from-string
+
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+        [textFieldLimitAlert addAction:ok];
+        [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
+    }
+}
 
 /*
 #pragma mark - Navigation
@@ -135,9 +176,9 @@
 // Setting PickerView Number of Rows
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     if ([pickerView isEqual: self.ohmsLawCalcPicker]) {
-        return 3;
+        return 3;   // ohmsLawCalcPicker has 3 rows
     } else {
-        return 7;
+        return 7;   // all other pickers have 7 rows
     }
 }
 
@@ -237,6 +278,9 @@
     // Assign User Input Values to Object Variables
     self.ohmsLawObject.input1Value = [self.ohmsLawInput1TextField.text doubleValue];
     self.ohmsLawObject.input2Value = [self.ohmsLawInput2TextField.text doubleValue];
+    
+    // Calls Function to Display Alert if Resistance or Current is set to 0 when calculating Current or Resistance, respectively
+    (void) [self cautionR];
     
     // Get Calculated Value from Object and display on Output Label
     (void) [[self ohmsLawObject] calcFinalValue];

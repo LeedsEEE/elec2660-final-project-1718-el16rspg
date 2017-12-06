@@ -32,11 +32,12 @@
 @property (strong, nonatomic) NSString *ohmsLawOutputUnit;
 
 
-
 - (IBAction)ohmsLawCalcButtonPressed:(UIButton *)sender;
 - (IBAction)hideKeyboardButton:(UIButton *)sender;
 - (void) setOhmsLawOutputLabel; // Function to set output label value after accounting for the unit multiplier
 - (void) setOhmsLawInputLabel; // Function to set input label value depending on ohmsLawCalcPicker value selected by user;
+- (void) cautionR; // Function to Display Alert if Resistance or Current is set to 0 when calculating Current or Resistance, respectively
+- (void) setBackground; // Function to set Background Image
 
 
 @end

@@ -24,6 +24,7 @@
 		9E2FA3E61FD35B440001C5E0 /* potDivViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FA3E51FD35B440001C5E0 /* potDivViewController.m */; };
 		9E2FA3EC1FD369BC0001C5E0 /* ohmsLawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FA3EB1FD369BC0001C5E0 /* ohmsLawViewController.m */; };
 		9E64258E1FD799AC003BD200 /* blackboard 16_9_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E64258D1FD799AC003BD200 /* blackboard 16_9_v2.png */; };
+		9E6425901FD79C5B003BD200 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9E64258F1FD79C5B003BD200 /* README.md */; };
 		9E875C941FD2E72F007F500C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E875C931FD2E72F007F500C /* main.m */; };
 		9E875C971FD2E72F007F500C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E875C961FD2E72F007F500C /* AppDelegate.m */; };
 		9E875C9A1FD2E72F007F500C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E875C991FD2E72F007F500C /* ViewController.m */; };
@@ -80,6 +81,7 @@
 		9E2FA3EA1FD369BC0001C5E0 /* ohmsLawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ohmsLawViewController.h; path = ../ohmsLawViewController.h; sourceTree = "<group>"; };
 		9E2FA3EB1FD369BC0001C5E0 /* ohmsLawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ohmsLawViewController.m; path = ../ohmsLawViewController.m; sourceTree = "<group>"; };
 		9E64258D1FD799AC003BD200 /* blackboard 16_9_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackboard 16_9_v2.png"; sourceTree = "<group>"; };
+		9E64258F1FD79C5B003BD200 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9E875C8F1FD2E72F007F500C /* ResistanceIsFutile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResistanceIsFutile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E875C931FD2E72F007F500C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9E875C951FD2E72F007F500C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				9E875C981FD2E72F007F500C /* ViewController.h */,
 				9E875C991FD2E72F007F500C /* ViewController.m */,
 				9E875C9B1FD2E730007F500C /* Main.storyboard */,
+				9E64258F1FD79C5B003BD200 /* README.md */,
 				9E875C9E1FD2E730007F500C /* Assets.xcassets */,
 				9E875CA01FD2E730007F500C /* LaunchScreen.storyboard */,
 				9E875CA31FD2E730007F500C /* Info.plist */,
@@ -427,6 +430,7 @@
 				9E23ED511FD5CDF0006E6562 /* ohmsLawDataModel.m in Sources */,
 				9ED051331FD30E0C00F35ADB /* seriesRViewController.m in Sources */,
 				9E2FA3EC1FD369BC0001C5E0 /* ohmsLawViewController.m in Sources */,
+				9E6425901FD79C5B003BD200 /* README.md in Sources */,
 				9EE0F9B31FD43DD300C0703D /* seriesRDataModel.m in Sources */,
 				9EE0F9BA1FD43E4E00C0703D /* colourCodeGenViewController.m in Sources */,
 				9E2FA3E61FD35B440001C5E0 /* potDivViewController.m in Sources */,

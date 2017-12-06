@@ -6,6 +6,14 @@
 //  Copyright © 2017 University of Leeds. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController
+
+- (void) setBackground; // Function to set Background Image
+
+@end
+
 
 // Sources for Images and Files
 /*
@@ -32,13 +40,3 @@
  1) Sketch_Block.ttf - sourced from https://www.dafont.com/sketch-block.font
  
  */
-
-
-#import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
-
-- (void) setBackground; // Function to set Background Image
-
-@end
-

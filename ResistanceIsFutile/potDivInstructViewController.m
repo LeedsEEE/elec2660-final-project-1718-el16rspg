@@ -1,18 +1,18 @@
 //
-//  colourCodeGenInstructViewController.m
+//  potDivInstructViewController.m
 //  ResistanceIsFutile
 //
 //  Created by Rohan Garg on 06/12/2017.
 //  Copyright © 2017 University of Leeds. All rights reserved.
 //
 
-#import "colourCodeGenInstructViewController.h"
+#import "potDivInstructViewController.h"
 
-@interface colourCodeGenInstructViewController ()
+@interface potDivInstructViewController ()
 
 @end
 
-@implementation colourCodeGenInstructViewController
+@implementation potDivInstructViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

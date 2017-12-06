@@ -1,18 +1,18 @@
 //
-//  colourCodeGenInstructViewController.m
+//  parallelRInstructViewController.m
 //  ResistanceIsFutile
 //
 //  Created by Rohan Garg on 06/12/2017.
 //  Copyright © 2017 University of Leeds. All rights reserved.
 //
 
-#import "colourCodeGenInstructViewController.h"
+#import "parallelRInstructViewController.h"
 
-@interface colourCodeGenInstructViewController ()
+@interface parallelRInstructViewController ()
 
 @end
 
-@implementation colourCodeGenInstructViewController
+@implementation parallelRInstructViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

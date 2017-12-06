@@ -1,5 +1,5 @@
 //
-//  colourCodeGenInstructViewController.h
+//  parallelRInstructViewController.h
 //  ResistanceIsFutile
 //
 //  Created by Rohan Garg on 06/12/2017.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface colourCodeGenInstructViewController : UIViewController
+@interface parallelRInstructViewController : UIViewController
 
 - (void) setBackground; // Function to set Background Image
 

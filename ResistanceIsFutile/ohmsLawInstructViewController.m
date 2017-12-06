@@ -1,18 +1,18 @@
 //
-//  colourCodeGenInstructViewController.m
+//  ohmsLawInstructViewController.m
 //  ResistanceIsFutile
 //
 //  Created by Rohan Garg on 06/12/2017.
 //  Copyright © 2017 University of Leeds. All rights reserved.
 //
 
-#import "colourCodeGenInstructViewController.h"
+#import "ohmsLawInstructViewController.h"
 
-@interface colourCodeGenInstructViewController ()
+@interface ohmsLawInstructViewController ()
 
 @end
 
-@implementation colourCodeGenInstructViewController
+@implementation ohmsLawInstructViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,14 +28,14 @@
 }
 
 /*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 #pragma mark - Functions
 

@@ -1,18 +1,18 @@
 //
-//  colourCodeGenInstructViewController.m
+//  seriesRInstructViewController.m
 //  ResistanceIsFutile
 //
 //  Created by Rohan Garg on 06/12/2017.
 //  Copyright © 2017 University of Leeds. All rights reserved.
 //
 
-#import "colourCodeGenInstructViewController.h"
+#import "seriesRInstructViewController.h"
 
-@interface colourCodeGenInstructViewController ()
+@interface seriesRInstructViewController ()
 
 @end
 
-@implementation colourCodeGenInstructViewController
+@implementation seriesRInstructViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

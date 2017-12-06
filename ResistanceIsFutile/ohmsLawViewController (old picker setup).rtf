@@ -1,0 +1,279 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf100
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Chalkboard SE Regular;\f2\fnil\fcharset0 AmericanTypewriter;
+}
+{\colortbl;\red255\green255\blue255;\red0\green116\blue0;\red0\green0\blue0;\red100\green56\blue32;
+\red196\green26\blue22;\red170\green13\blue145;\red63\green110\blue116;\red46\green13\blue110;\red28\green0\blue207;
+\red92\green38\blue153;\red38\green71\blue75;\red14\green14\blue255;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c45600\c0;\csgenericrgb\c0\c0\c0;\csgenericrgb\c39100\c22000\c12500;
+\csgenericrgb\c77000\c10200\c8600;\csgenericrgb\c66500\c5200\c56900;\csgenericrgb\c24700\c43100\c45600;\csgenericrgb\c18100\c5200\c43100;\csgenericrgb\c11000\c0\c81000;
+\csgenericrgb\c35900\c14900\c60100;\csgenericrgb\c14900\c27800\c29400;\csgenericrgb\c5500\c5500\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab543
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 //\cf3 \
+\cf2 //  ohmsLawViewController.m\cf3 \
+\cf2 //  ResistanceIsFutile\cf3 \
+\cf2 //\cf3 \
+\cf2 //  Created by 
+\f1\fs128 Rohan
+\f2\fs22  
+\f0 Garg on 02/12/2017.\cf3 \
+\cf2 //  Copyright \'a9 2017 University of Leeds. All rights reserved.\cf3 \
+\cf2 //\cf3 \
+\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf4 #import \cf5 "ohmsLawViewController.h"\cf4 \
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf3 \
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf6 @interface\cf3  \cf7 ohmsLawViewController\cf3  ()\
+\{\
+\
+\}\
+\cf6 @end\cf3 \
+\
+\cf6 @implementation\cf3  ohmsLawViewController\
+\
+- (\cf6 void\cf3 )viewDidLoad \{\
+    [\cf6 super\cf3  \cf8 viewDidLoad\cf3 ];\
+    \cf2 // Do any additional setup after loading the view.\cf3 \
+    \
+    \cf2 // Defining unit arrays\cf3 \
+    \cf6 self\cf3 .\cf7 unitOhm\cf3  = \cf9 @[\cf5 @"n\uc0\u937 "\cf3 ,\cf5 @"\'b5\uc0\u937 "\cf3 ,\cf5 @"m\uc0\u937 "\cf3 ,\cf5 @"\uc0\u937 "\cf3 ,\cf5 @"k\uc0\u937 "\cf3 ,\cf5 @"M\uc0\u937 "\cf3 ,\cf5 @"G\uc0\u937 "\cf9 ]\cf3 ;\
+    \cf6 self\cf3 .\cf7 unitAmp\cf3  = \cf9 @[\cf5 @"nA"\cf3 ,\cf5 @"\'b5A"\cf3 ,\cf5 @"mA"\cf3 ,\cf5 @"A"\cf3 ,\cf5 @"kA"\cf3 ,\cf5 @"MA"\cf3 ,\cf5 @"GA"\cf9 ]\cf3 ;\
+    \cf6 self\cf3 .\cf7 unitVol\cf3  = \cf9 @[\cf5 @"nV"\cf3 ,\cf5 @"\'b5V"\cf3 ,\cf5 @"mV"\cf3 ,\cf5 @"V"\cf3 ,\cf5 @"kV"\cf3 ,\cf5 @"MV"\cf3 ,\cf5 @"GV"\cf9 ]\cf3 ;\
+    \
+    \cf2 // Initialise Object of ohmsLawDataModel Class\cf3 \
+    \cf6 self\cf3 .\cf7 ohmsLawObject\cf3  = [[\cf7 ohmsLawDataModel\cf3  \cf8 alloc\cf3 ] \cf8 init\cf3 ];\
+    \
+    \cf2 // Display Decimal Pad Keyboard Type\cf3 \
+    \cf6 self\cf3 .\cf7 ohmsLawInput1TextField\cf3 .\cf10 keyboardType\cf3  = \cf8 UIKeyboardTypeDecimalPad\cf3 ;\
+    \cf6 self\cf3 .\cf7 ohmsLawInput2TextField\cf3 .\cf10 keyboardType\cf3  = \cf8 UIKeyboardTypeDecimalPad\cf3 ;\
+    \
+    \cf2 // Assigning Text Field Delegate as View Controller - needed to restrict character limit\cf3 \
+    \cf6 self\cf3 .\cf7 ohmsLawInput1TextField\cf3 .\cf10 delegate\cf3  = \cf6 self\cf3 ;\
+    \cf6 self\cf3 .\cf7 ohmsLawInput2TextField\cf3 .\cf10 delegate\cf3  = \cf6 self\cf3 ;\
+    \
+    \cf2 // Assigning Picker View Delegate and Data Source as View Controller\cf3 \
+    \cf6 self\cf3 .\cf7 ohmsLawCalcPicker\cf3 .\cf10 dataSource\cf3  = \cf6 self\cf3 ;\
+    \cf6 self\cf3 .\cf7 ohmsLawCalcPicker\cf3 .\cf10 delegate\cf3  = \cf6 self\cf3 ;\
+    \cf6 self\cf3 .\cf7 ohmsLawInput1Multiplier\cf3 .\cf10 dataSource\cf3  = \cf6 self\cf3 ;\
+    \cf6 self\cf3 .\cf7 ohmsLawInput1Multiplier\cf3 .\cf10 delegate\cf3  = \cf6 self\cf3 ;\
+    \cf6 self\cf3 .\cf7 ohmsLawInput2Multiplier\cf3 .\cf10 dataSource\cf3  = \cf6 self\cf3 ;\
+    \cf6 self\cf3 .\cf7 ohmsLawInput2Multiplier\cf3 .\cf10 delegate\cf3  = \cf6 self\cf3 ;\
+    \
+    \cf2 // Assigning Default Row to be displayed for PickerView;\cf3 \
+    [\cf6 self\cf3 .\cf7 ohmsLawInput1Multiplier\cf3  \cf8 selectRow\cf3 :\cf9 3\cf3  \cf8 inComponent\cf3 :\cf9 0\cf3  \cf8 animated\cf3 :\cf6 NO\cf3 ];\
+    [\cf6 self\cf3 .\cf7 ohmsLawInput2Multiplier\cf3  \cf8 selectRow\cf3 :\cf9 3\cf3  \cf8 inComponent\cf3 :\cf9 0\cf3  \cf8 animated\cf3 :\cf6 NO\cf3 ];\
+    [\cf6 self\cf3 .\cf7 ohmsLawCalcPicker\cf3  \cf8 selectRow\cf3 :\cf9 1\cf3  \cf8 inComponent\cf3 :\cf9 0\cf3  \cf8 animated\cf3 :\cf6 NO\cf3 ];\
+    \
+    \cf2 // Selecting Default Row to be used for calculations when User does NOT scroll the Picker\cf3 \
+    [\cf6 self\cf3  \cf8 pickerView\cf3 :\cf6 self\cf3 .\cf7 ohmsLawInput1Multiplier\cf3  \cf8 didSelectRow\cf3 :\cf9 3\cf3  \cf8 inComponent\cf3 :\cf9 0\cf3 ];\
+    [\cf6 self\cf3  \cf8 pickerView\cf3 :\cf6 self\cf3 .\cf7 ohmsLawInput2Multiplier\cf3  \cf8 didSelectRow\cf3 :\cf9 3\cf3  \cf8 inComponent\cf3 :\cf9 0\cf3 ];\
+    [\cf6 self\cf3  \cf8 pickerView\cf3 :\cf6 self\cf3 .\cf7 ohmsLawCalcPicker\cf3  \cf8 didSelectRow\cf3 :\cf9 1\cf3  \cf8 inComponent\cf3 :\cf9 0\cf3 ];\
+\}\
+\
+- (\cf6 void\cf3 )didReceiveMemoryWarning \{\
+    [\cf6 super\cf3  \cf8 didReceiveMemoryWarning\cf3 ];\
+    \cf2 // Dispose of any resources that can be recreated.\cf3 \
+\}\
+\
+\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf4 #pragma mark - Functions\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf3 \
+\
+\cf2 // Function to set input label value depending on ohmsLawCalcPicker value selected by user;\cf3 \
+- (\cf6 void\cf3 ) setOhmsLawInputLabel \{\
+    \cf6 if\cf3  ([\cf6 self\cf3 .\cf7 ohmsLawCalcPicker\cf3  \cf8 selectedRowInComponent\cf3 :\cf9 0\cf3 ] == \cf9 0\cf3 ) \{\
+        \cf6 self\cf3 .\cf7 ohmsLawInput1Label\cf3 .\cf10 text\cf3  = [\cf10 NSString\cf3  \cf8 stringWithFormat\cf3 : \cf5 @"Current:"\cf3 ];\
+        \cf6 self\cf3 .\cf7 ohmsLawInput2Label\cf3 .\cf10 text\cf3  = [\cf10 NSString\cf3  \cf8 stringWithFormat\cf3 : \cf5 @"Resistance:"\cf3 ];\
+    \} \cf6 else\cf3  \cf6 if\cf3  ([\cf6 self\cf3 .\cf7 ohmsLawCalcPicker\cf3  \cf8 selectedRowInComponent\cf3 :\cf9 0\cf3 ] == \cf9 1\cf3 ) \{\
+        \cf6 self\cf3 .\cf7 ohmsLawInput1Label\cf3 .\cf10 text\cf3  = [\cf10 NSString\cf3  \cf8 stringWithFormat\cf3 : \cf5 @"Voltage:"\cf3 ];\
+        \cf6 self\cf3 .\cf7 ohmsLawInput2Label\cf3 .\cf10 text\cf3  = [\cf10 NSString\cf3  \cf8 stringWithFormat\cf3 : \cf5 @"Resistance:"\cf3 ];\
+    \} \cf6 else\cf3  \{\
+        \cf6 self\cf3 .\cf7 ohmsLawInput1Label\cf3 .\cf10 text\cf3  = [\cf10 NSString\cf3  \cf8 stringWithFormat\cf3 : \cf5 @"Voltage:"\cf3 ];\
+        \cf6 self\cf3 .\cf7 ohmsLawInput2Label\cf3 .\cf10 text\cf3  = [\cf10 NSString\cf3  \cf8 stringWithFormat\cf3 : \cf5 @"Current:"\cf3 ];\
+    \}\
+\}\
+\
+\cf2 // Function to determine Output Label's appropriate multiplier units\cf3 \
+- (\cf6 void\cf3 ) setOhmsLawOutputLabel \{\
+    \cf6 if\cf3  (\cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,-\cf9 9\cf3 ) >= \cf9 1\cf3   && \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,-\cf9 9\cf3 ) < \cf9 1000\cf3 ) \{\
+        \cf6 self\cf3 .\cf7 ohmsLawOutputLabel\cf3 .\cf10 text\cf3  = [\cf10 NSString\cf3  \cf8 stringWithFormat\cf3 : \cf5 @"V = %.3f nV"\cf3 , \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,-\cf9 9\cf3 )];\
+    \} \cf6 else\cf3  \cf6 if\cf3  (\cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,-\cf9 6\cf3 ) >= \cf9 1\cf3   && \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,-\cf9 6\cf3 ) < \cf9 1000\cf3 ) \{\
+        \cf6 self\cf3 .\cf7 ohmsLawOutputLabel\cf3 .\cf10 text\cf3  = [\cf10 NSString\cf3  \cf8 stringWithFormat\cf3 : \cf5 @"V = %.3f \'b5V"\cf3 , \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,-\cf9 6\cf3 )];\
+    \} \cf6 else\cf3  \cf6 if\cf3  (\cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,-\cf9 3\cf3 ) >= \cf9 1\cf3  && \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,-\cf9 3\cf3 ) < \cf9 1000\cf3 ) \{\
+        \cf6 self\cf3 .\cf7 ohmsLawOutputLabel\cf3 .\cf10 text\cf3  = [\cf10 NSString\cf3  \cf8 stringWithFormat\cf3 : \cf5 @"V = %.3f mV"\cf3 , \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,-\cf9 3\cf3 )];\
+    \} \cf6 else\cf3  \cf6 if\cf3  (\cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,\cf9 3\cf3 ) >= \cf9 1\cf3  && \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,\cf9 3\cf3 ) < \cf9 1000\cf3 ) \{\
+        \cf6 self\cf3 .\cf7 ohmsLawOutputLabel\cf3 .\cf10 text\cf3  = [\cf10 NSString\cf3  \cf8 stringWithFormat\cf3 : \cf5 @"V = %.3f kV"\cf3 , \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,\cf9 3\cf3 )];\
+    \} \cf6 else\cf3  \cf6 if\cf3  (\cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,\cf9 6\cf3 ) >= \cf9 1\cf3  && \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,\cf9 6\cf3 ) < \cf9 1000\cf3 ) \{\
+        \cf6 self\cf3 .\cf7 ohmsLawOutputLabel\cf3 .\cf10 text\cf3  = [\cf10 NSString\cf3  \cf8 stringWithFormat\cf3 : \cf5 @"V = %.3f MV"\cf3 , \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,\cf9 6\cf3 )];\
+    \} \cf6 else\cf3  \cf6 if\cf3  (\cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,\cf9 9\cf3 ) >= \cf9 1\cf3 ) \{\
+        \cf6 self\cf3 .\cf7 ohmsLawOutputLabel\cf3 .\cf10 text\cf3  = [\cf10 NSString\cf3  \cf8 stringWithFormat\cf3 : \cf5 @"V = %.3f GV"\cf3 , \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 /\cf8 pow\cf3 (\cf9 10\cf3 ,\cf9 9\cf3 )];\
+    \} \cf6 else\cf3  \{\
+        \cf6 self\cf3 .\cf7 ohmsLawOutputLabel\cf3 .\cf10 text\cf3  = [\cf10 NSString\cf3  \cf8 stringWithFormat\cf3 : \cf5 @"V = %.3f V"\cf3 , \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 outputValue\cf3 ];\
+    \}\
+\}\
+\
+\
+\cf2 /*\
+#pragma mark - Navigation\
+\
+// In a storyboard-based application, you will often want to do a little preparation before navigation\
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender \{\
+    // Get the new view controller using [segue destinationViewController].\
+    // Pass the selected object to the new view controller.\
+\}\
+*/\cf3 \
+\
+\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf4 #pragma mark - Picker Data Source\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf3 \
+\cf2 // Setting PickerView Number of Columns to 1\cf3 \
+- (\cf10 NSInteger\cf3 )numberOfComponentsInPickerView:(\cf10 UIPickerView\cf3  *)pickerView\{\
+    \cf6 return\cf3  \cf9 1\cf3 ;\
+\}\
+\
+\cf2 // Setting PickerView Number of Rows\cf3 \
+- (\cf10 NSInteger\cf3 )pickerView:(\cf10 UIPickerView\cf3  *)pickerView numberOfRowsInComponent:(\cf10 NSInteger\cf3 )component\{\
+    \cf6 if\cf3  ([pickerView \cf8 isEqual\cf3 : \cf6 self\cf3 .\cf7 ohmsLawCalcPicker\cf3 ]) \{\
+        \cf6 return\cf3  \cf9 3\cf3 ;\
+    \} \cf6 else\cf3  \{\
+        \cf6 return\cf3  \cf9 7\cf3 ;\
+    \}\
+\}\
+\
+\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf4 #pragma mark - Picker Delegate\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf3 \
+- (\cf10 UIView\cf3  *)pickerView:(\cf10 UIPickerView\cf3  *)pickerView viewForRow:(\cf10 NSInteger\cf3 )row forComponent:(\cf10 NSInteger\cf3 )component reusingView:(\cf10 UIView\cf3  *)view \{\
+    \
+    \cf2 // Assigning PickerView Labels\cf3 \
+    \cf10 UILabel\cf3 * pickerLabel = (\cf10 UILabel\cf3  *)view;\
+    \
+    \cf2 // Customising PickerView Label Appearance\cf3 \
+    \cf6 if\cf3  ([ pickerView \cf8 isEqual\cf3 : \cf6 self\cf3 .\cf7 ohmsLawCalcPicker\cf3 ]) \{\
+        \cf6 if\cf3  (!pickerLabel) \{\
+            pickerLabel = [[\cf10 UILabel\cf3  \cf8 alloc\cf3 ] \cf8 init\cf3 ];\
+            pickerLabel.\cf10 font\cf3  = [\cf10 UIFont\cf3  \cf8 fontWithName\cf3 : \cf5 @"Sketch Block"\cf3  \cf8 size\cf3 : \cf9 18\cf3 ];\
+            pickerLabel.\cf10 textColor\cf3  = [\cf10 UIColor\cf3  \cf8 blackColor\cf3 ];\
+            pickerLabel.\cf10 textAlignment\cf3  = \cf8 NSTextAlignmentCenter\cf3 ;\
+        \}\
+    \} \cf6 else\cf3  \{\
+        \cf6 if\cf3  (!pickerLabel) \{\
+            pickerLabel = [[\cf10 UILabel\cf3  \cf8 alloc\cf3 ] \cf8 init\cf3 ];\
+            pickerLabel.\cf10 font\cf3  = [\cf10 UIFont\cf3  \cf8 fontWithName\cf3 : \cf5 @"Sketch Block"\cf3  \cf8 size\cf3 : \cf9 16\cf3 ];\
+            pickerLabel.\cf10 textColor\cf3  = [\cf10 UIColor\cf3  \cf8 blackColor\cf3 ];\
+            pickerLabel.\cf10 textAlignment\cf3  = \cf8 NSTextAlignmentCenter\cf3 ;\
+        \}\
+    \}\
+    \
+    \cf2 //Assigning PickerView Label Text\cf3 \
+    \cf6 if\cf3  ([pickerView \cf8 isEqual\cf3 : \cf6 self\cf3 .\cf7 ohmsLawCalcPicker\cf3 ]) \{\
+        \cf6 if\cf3  (row == \cf9 0\cf3 ) \{\
+            pickerLabel.\cf10 text\cf3  = \cf5 @"Calculate Voltage"\cf3 ;\
+        \} \cf6 else\cf3  \cf6 if\cf3  (row == \cf9 1\cf3 ) \{\
+            pickerLabel.\cf10 text\cf3  = \cf5 @"Calculate Current"\cf3 ;\
+        \} \cf6 else\cf3  \{\
+            pickerLabel.\cf10 text\cf3  = \cf5 @"Calculate Resistance"\cf3 ;\
+        \}\
+    \} \cf6 else\cf3  \cf6 if\cf3  ([pickerView \cf8 isEqual\cf3 : \cf6 self\cf3 .\cf7 ohmsLawInput1Multiplier\cf3 ]) \{\
+        \cf6 if\cf3  ([\cf6 self\cf3 .\cf7 ohmsLawCalcPicker\cf3  \cf8 selectedRowInComponent\cf3 :\cf9 0\cf3 ] == \cf9 0\cf3 ) \{\
+            pickerLabel.\cf10 text\cf3  = \cf6 self\cf3 .\cf7 unitAmp\cf3 [row];\
+        \} \cf6 else\cf3  \{\
+            pickerLabel.\cf10 text\cf3  = \cf6 self\cf3 .\cf7 unitVol\cf3 [row];\
+        \}\
+    \} \cf6 else\cf3  \{\
+        \cf6 if\cf3  ([\cf6 self\cf3 .\cf7 ohmsLawCalcPicker\cf3  \cf8 selectedRowInComponent\cf3 :\cf9 0\cf3 ] == \cf9 2\cf3 ) \{\
+            pickerLabel.\cf10 text\cf3  = \cf6 self\cf3 .\cf7 unitAmp\cf3 [row];\
+        \} \cf6 else\cf3  \{\
+            pickerLabel.\cf10 text\cf3  = \cf6 self\cf3 .\cf7 unitOhm\cf3 [row];\
+        \}\
+    \}\
+    \cf6 return\cf3  pickerLabel;\
+\}\
+\
+\cf2 // Matching Row Index with Column to access Value\cf3 \
+- (\cf6 void\cf3 )pickerView:(\cf10 UIPickerView\cf3  *)pickerView didSelectRow:(\cf10 NSInteger\cf3 )row inComponent:(\cf10 NSInteger\cf3 )component\{\
+    \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 calcType\cf3  = [\cf6 self\cf3 .\cf7 ohmsLawCalcPicker\cf3  \cf8 selectedRowInComponent\cf3 :\cf9 0\cf3 ];\
+    \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 input1Multiplier\cf3  = [\cf6 self\cf3 .\cf7 ohmsLawInput1Multiplier\cf3  \cf8 selectedRowInComponent\cf3 :\cf9 0\cf3 ];\
+    \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 input2Multiplier\cf3  = [\cf6 self\cf3 .\cf7 ohmsLawInput2Multiplier\cf3  \cf8 selectedRowInComponent\cf3 :\cf9 0\cf3 ];\
+    \
+    \cf2 // Calling function to change Ohms Law Input Label\cf3 \
+    (\cf6 void\cf3 ) [\cf6 self\cf3  \cf11 setOhmsLawInputLabel\cf3 ];\
+\}\
+\
+\
+\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf4 #pragma mark - Text Field Delegate\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf3 \
+\cf2 // Assigning Text Field Character Limit to 10\cf3 \
+\cf2 // Source: {\field{\*\fldinst{HYPERLINK "https://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield"}}{\fldrslt \cf12 https://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield}}\cf3 \
+\cf2 // ----------------------------------------------------------------------------------------------------\cf3 \
+- (\cf6 BOOL\cf3 )textField:(\cf10 UITextField\cf3  *)textField shouldChangeCharactersInRange:(\cf10 NSRange\cf3 )range replacementString:(\cf10 NSString\cf3  *)string \{\
+    \
+    \cf6 int\cf3  textFieldLimit = \cf9 10\cf3 ;\
+    \
+    \cf6 if\cf3  (textField.\cf10 text\cf3 .\cf10 length\cf3  > textFieldLimit-\cf9 1\cf3 ) \{\
+        \cf6 if\cf3 ([string \cf8 isEqualToString\cf3 :\cf5 @""\cf3 ] && range.\cf10 length\cf3  == \cf9 1\cf3 ) \{\
+            \cf6 return\cf3  \cf6 TRUE\cf3 ;\
+        \} \cf6 else\cf3  \{\
+            \
+            \cf2 // Display Alert if Maximum Character Limit Exceeded\cf3 \
+            \cf2 // Source: {\field{\*\fldinst{HYPERLINK "http://nshipster.com/uialertcontroller/"}}{\fldrslt \cf12 http://nshipster.com/uialertcontroller/}}\cf3 \
+            \cf2 // ---------------------------------------------------------------------------------------\cf3 \
+            \cf10 UIAlertController\cf3  *textFieldLimitAlert = [\cf10 UIAlertController\cf3  \cf8 alertControllerWithTitle\cf3 :\cf5 @"Character Limit Reached!"\cf3  \cf8 message\cf3 :\cf5 @"You may only enter a maximum of 10 characters per text field. Perhaps, you may want to consider using the multiplier picker to change the units."\cf3  \cf8 preferredStyle\cf3 :\cf8 UIAlertControllerStyleAlert\cf3 ];\
+            \
+            \cf10 UIAlertAction\cf3  *ok = [\cf10 UIAlertAction\cf3  \cf8 actionWithTitle\cf3 :\cf5 @"OK"\cf3  \cf8 style\cf3 :\cf8 UIAlertActionStyleCancel\cf3  \cf8 handler\cf3 :\cf6 nil\cf3 ];\
+            \
+            [textFieldLimitAlert \cf8 addAction\cf3 :ok];\
+            \
+            [\cf6 self\cf3  \cf8 presentViewController\cf3 :textFieldLimitAlert \cf8 animated\cf3 :\cf6 YES\cf3  \cf8 completion\cf3 :\cf6 nil\cf3 ];\
+            \cf2 // ---------------------------------------------------------------------------------------\cf3 \
+            \
+            \cf6 return\cf3  \cf6 FALSE\cf3 ;\
+        \}\
+    \} \cf6 else\cf3  \{\
+        \cf6 return\cf3  \cf6 TRUE\cf3 ;\
+    \}\
+\}\
+\cf2 // ---------------------------------------------------------------------------------------------------\cf3 \
+\
+\
+- (\cf6 IBAction\cf3 )ohmsLawCalcButtonPressed:(\cf10 UIButton\cf3  *)sender \{\
+    \
+    \cf2 // Hide Keyboard if Calculate Button Pressed\cf3 \
+    [[\cf6 self\cf3  \cf11 ohmsLawInput1TextField\cf3 ] \cf8 resignFirstResponder\cf3 ];\
+    [[\cf6 self\cf3  \cf11 ohmsLawInput2TextField\cf3 ] \cf8 resignFirstResponder\cf3 ];\
+    \
+    \cf2 // Assign User Input Values to Object Variables\cf3 \
+    \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 input1Value\cf3  = [\cf6 self\cf3 .\cf7 ohmsLawInput1TextField\cf3 .\cf10 text\cf3  \cf8 doubleValue\cf3 ];\
+    \cf6 self\cf3 .\cf7 ohmsLawObject\cf3 .\cf7 input2Value\cf3  = [\cf6 self\cf3 .\cf7 ohmsLawInput2TextField\cf3 .\cf10 text\cf3  \cf8 doubleValue\cf3 ];\
+    \
+    \cf2 // Get Calculated Value from Object and display on Output Label\cf3 \
+    (\cf6 void\cf3 ) [[\cf6 self\cf3  \cf11 ohmsLawObject\cf3 ] \cf11 calcFinalValue\cf3 ];\
+    (\cf6 void\cf3 ) [\cf6 self\cf3  \cf11 setOhmsLawOutputLabel\cf3 ];\
+\}\
+\
+\cf2 // Hide Keyboard when User touches outside Keyboard\cf3 \
+- (\cf6 IBAction\cf3 )hideKeyboardButton:(\cf10 UIButton\cf3  *)sender \{\
+    \cf6 if\cf3  (\cf6 self\cf3 .\cf7 ohmsLawInput1TextField\cf3 .\cf10 isFirstResponder\cf3 ) \{\
+        [[\cf6 self\cf3  \cf11 ohmsLawInput1TextField\cf3 ] \cf8 resignFirstResponder\cf3 ];\
+    \}\
+    \cf6 if\cf3  (\cf6 self\cf3 .\cf7 ohmsLawInput2TextField\cf3 .\cf10 isFirstResponder\cf3 ) \{\
+        [[\cf6 self\cf3  \cf11 ohmsLawInput2TextField\cf3 ] \cf8 resignFirstResponder\cf3 ];\
+    \}\
+\}\
+\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf6 @end\cf3 \
+}

@@ -13,7 +13,7 @@
 
 -(void) calcFinalValue; {
     
-    // Adjusts R1 Input Values to account for Units (Multiplier)
+    // Adjusts Input1 Values to account for Units (Multiplier)
     if (self.input1Multiplier == 0) {
         self.input1Value = self.input1Value*pow(10,-9);
     } else if (self.input1Multiplier == 1) {
@@ -30,7 +30,7 @@
         self.input1Value = self.input1Value;
     }
     
-    // Adjusts R2 Input Values to account for Units (Multiplier)
+    // Adjusts Input2 Values to account for Units (Multiplier)
     if (self.input2Multiplier == 0) {
         self.input2Value = self.input2Value*pow(10,-9);
     } else if (self.input2Multiplier == 1) {
@@ -47,7 +47,7 @@
         self.input2Value = self.input2Value;
     }
     
-    // Calculates Final Equivalent Resistance of R1, R2, and R3
+    // Calculates Final Output Value
     if (self.calcType == 0) {
         self.outputValue = self.input1Value * self.input2Value;
     } else {

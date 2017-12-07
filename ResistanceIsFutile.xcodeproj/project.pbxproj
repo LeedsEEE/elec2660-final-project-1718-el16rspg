@@ -33,6 +33,7 @@
 		9E875CAD1FD2E731007F500C /* ResistanceIsFutileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E875CAC1FD2E731007F500C /* ResistanceIsFutileTests.m */; };
 		9E875CB81FD2E731007F500C /* ResistanceIsFutileUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E875CB71FD2E731007F500C /* ResistanceIsFutileUITests.m */; };
 		9E875CC61FD2E9A8007F500C /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E875CC51FD2E9A8007F500C /* Logo.png */; };
+		9EA0C6A41FD878D300955019 /* potDivDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA0C6A31FD878D300955019 /* potDivDataModel.m */; };
 		9ED0512C1FD2F6C500F35ADB /* Sketch_Block.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9ED0512B1FD2F6C500F35ADB /* Sketch_Block.ttf */; };
 		9ED051301FD2FCBB00F35ADB /* Button.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9ED0512F1FD2FCBB00F35ADB /* Button.PNG */; };
 		9ED051331FD30E0C00F35ADB /* seriesRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED051321FD30E0C00F35ADB /* seriesRViewController.m */; };
@@ -102,6 +103,8 @@
 		9E875CB71FD2E731007F500C /* ResistanceIsFutileUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResistanceIsFutileUITests.m; sourceTree = "<group>"; };
 		9E875CB91FD2E731007F500C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E875CC51FD2E9A8007F500C /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
+		9EA0C6A21FD878D300955019 /* potDivDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = potDivDataModel.h; sourceTree = "<group>"; };
+		9EA0C6A31FD878D300955019 /* potDivDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = potDivDataModel.m; sourceTree = "<group>"; };
 		9ED0512B1FD2F6C500F35ADB /* Sketch_Block.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sketch_Block.ttf; sourceTree = "<group>"; };
 		9ED0512F1FD2FCBB00F35ADB /* Button.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.PNG; sourceTree = "<group>"; };
 		9ED051311FD30E0C00F35ADB /* seriesRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = seriesRViewController.h; path = ../seriesRViewController.h; sourceTree = "<group>"; };
@@ -270,6 +273,8 @@
 				9EE1B0CF1FD80BD000EAA14F /* potDivInstructViewController.m */,
 				9E2FA3E41FD35B440001C5E0 /* potDivViewController.h */,
 				9E2FA3E51FD35B440001C5E0 /* potDivViewController.m */,
+				9EA0C6A21FD878D300955019 /* potDivDataModel.h */,
+				9EA0C6A31FD878D300955019 /* potDivDataModel.m */,
 			);
 			name = potDiv;
 			sourceTree = "<group>";
@@ -449,6 +454,7 @@
 				9EE1B0CD1FD80B2B00EAA14F /* ohmsLawInstructViewController.m in Sources */,
 				9E875C9A1FD2E72F007F500C /* ViewController.m in Sources */,
 				9E875C971FD2E72F007F500C /* AppDelegate.m in Sources */,
+				9EA0C6A41FD878D300955019 /* potDivDataModel.m in Sources */,
 				9EE1B0D61FD80C2600EAA14F /* seriesRInstructViewController.m in Sources */,
 				9EE1B0D91FD80C5300EAA14F /* colourCodeGenInstructViewController.m in Sources */,
 				9E2FA3E01FD350800001C5E0 /* parallelRViewController.m in Sources */,

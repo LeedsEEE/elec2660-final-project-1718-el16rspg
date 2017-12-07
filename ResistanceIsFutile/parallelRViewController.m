@@ -77,19 +77,19 @@
 // Function to determine Output Label's appropriate multiplier units
 - (void) setParallelROutputLabel {
     if (self.parallelRObject.RFinalValue/pow(10,-9) >= 1  && self.parallelRObject.RFinalValue/pow(10,-9) < 1000) {
-        self.parallelROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f nΩ", self.parallelRObject.RFinalValue/pow(10,-9)];
+        self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f nΩ", self.parallelRObject.RFinalValue/pow(10,-9)];
     } else if (self.parallelRObject.RFinalValue/pow(10,-6) >= 1  && self.parallelRObject.RFinalValue/pow(10,-6) < 1000) {
-        self.parallelROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f µΩ", self.parallelRObject.RFinalValue/pow(10,-6)];
+        self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f µΩ", self.parallelRObject.RFinalValue/pow(10,-6)];
     } else if (self.parallelRObject.RFinalValue/pow(10,-3) >= 1 && self.parallelRObject.RFinalValue/pow(10,-3) < 1000) {
-        self.parallelROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f mΩ", self.parallelRObject.RFinalValue/pow(10,-3)];
+        self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f mΩ", self.parallelRObject.RFinalValue/pow(10,-3)];
     } else if (self.parallelRObject.RFinalValue/pow(10,3) >= 1 && self.parallelRObject.RFinalValue/pow(10,3) < 1000) {
-        self.parallelROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f kΩ", self.parallelRObject.RFinalValue/pow(10,3)];
+        self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f kΩ", self.parallelRObject.RFinalValue/pow(10,3)];
     } else if (self.parallelRObject.RFinalValue/pow(10,6) >= 1 && self.parallelRObject.RFinalValue/pow(10,6) < 1000) {
-        self.parallelROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f MΩ", self.parallelRObject.RFinalValue/pow(10,6)];
+        self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f MΩ", self.parallelRObject.RFinalValue/pow(10,6)];
     } else if (self.parallelRObject.RFinalValue/pow(10,9) >= 1) {
-        self.parallelROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f GΩ", self.parallelRObject.RFinalValue/pow(10,9)];
+        self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f GΩ", self.parallelRObject.RFinalValue/pow(10,9)];
     } else {
-        self.parallelROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f Ω", self.parallelRObject.RFinalValue];
+        self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f Ω", self.parallelRObject.RFinalValue];
     }
 }
 

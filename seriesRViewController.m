@@ -78,19 +78,19 @@
 // Function to determine Output Label's appropriate multiplier units
 - (void) setSeriesROutputLabel {
     if (self.seriesRObject.RFinalValue/pow(10,-9) >= 1  && self.seriesRObject.RFinalValue/pow(10,-9) < 1000) {
-        self.seriesROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f nΩ", self.seriesRObject.RFinalValue/pow(10,-9)];
+        self.seriesROutputLabel.text = [NSString stringWithFormat: @"R = %.3f nΩ", self.seriesRObject.RFinalValue/pow(10,-9)];
     } else if (self.seriesRObject.RFinalValue/pow(10,-6) >= 1  && self.seriesRObject.RFinalValue/pow(10,-6) < 1000) {
-        self.seriesROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f µΩ", self.seriesRObject.RFinalValue/pow(10,-6)];
+        self.seriesROutputLabel.text = [NSString stringWithFormat: @"R = %.3f µΩ", self.seriesRObject.RFinalValue/pow(10,-6)];
     } else if (self.seriesRObject.RFinalValue/pow(10,-3) >= 1 && self.seriesRObject.RFinalValue/pow(10,-3) < 1000) {
-        self.seriesROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f mΩ", self.seriesRObject.RFinalValue/pow(10,-3)];
+        self.seriesROutputLabel.text = [NSString stringWithFormat: @"R = %.3f mΩ", self.seriesRObject.RFinalValue/pow(10,-3)];
     } else if (self.seriesRObject.RFinalValue/pow(10,3) >= 1 && self.seriesRObject.RFinalValue/pow(10,3) < 1000) {
-        self.seriesROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f kΩ", self.seriesRObject.RFinalValue/pow(10,3)];
+        self.seriesROutputLabel.text = [NSString stringWithFormat: @"R = %.3f kΩ", self.seriesRObject.RFinalValue/pow(10,3)];
     } else if (self.seriesRObject.RFinalValue/pow(10,6) >= 1 && self.seriesRObject.RFinalValue/pow(10,6) < 1000) {
-        self.seriesROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f MΩ", self.seriesRObject.RFinalValue/pow(10,6)];
+        self.seriesROutputLabel.text = [NSString stringWithFormat: @"R = %.3f MΩ", self.seriesRObject.RFinalValue/pow(10,6)];
     } else if (self.seriesRObject.RFinalValue/pow(10,9) >= 1) {
-        self.seriesROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f GΩ", self.seriesRObject.RFinalValue/pow(10,9)];
+        self.seriesROutputLabel.text = [NSString stringWithFormat: @"R = %.3f GΩ", self.seriesRObject.RFinalValue/pow(10,9)];
     } else {
-        self.seriesROutputLabel.text = [NSString stringWithFormat: @"Total Resistance = %.3f Ω", self.seriesRObject.RFinalValue];
+        self.seriesROutputLabel.text = [NSString stringWithFormat: @"R = %.3f Ω", self.seriesRObject.RFinalValue];
     }
 }
 

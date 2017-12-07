@@ -34,6 +34,8 @@
 		9E875CB81FD2E731007F500C /* ResistanceIsFutileUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E875CB71FD2E731007F500C /* ResistanceIsFutileUITests.m */; };
 		9E875CC61FD2E9A8007F500C /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E875CC51FD2E9A8007F500C /* Logo.png */; };
 		9EA0C6A41FD878D300955019 /* potDivDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA0C6A31FD878D300955019 /* potDivDataModel.m */; };
+		9EA0C6A71FD9670F00955019 /* colourCodeGenDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA0C6A61FD9670F00955019 /* colourCodeGenDataModel.m */; };
+		9EA0C6FA1FD9D4A700955019 /* ResistorImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EA0C6F91FD9D4A700955019 /* ResistorImage.png */; };
 		9ED0512C1FD2F6C500F35ADB /* Sketch_Block.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9ED0512B1FD2F6C500F35ADB /* Sketch_Block.ttf */; };
 		9ED051301FD2FCBB00F35ADB /* Button.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9ED0512F1FD2FCBB00F35ADB /* Button.PNG */; };
 		9ED051331FD30E0C00F35ADB /* seriesRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED051321FD30E0C00F35ADB /* seriesRViewController.m */; };
@@ -105,6 +107,9 @@
 		9E875CC51FD2E9A8007F500C /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		9EA0C6A21FD878D300955019 /* potDivDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = potDivDataModel.h; sourceTree = "<group>"; };
 		9EA0C6A31FD878D300955019 /* potDivDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = potDivDataModel.m; sourceTree = "<group>"; };
+		9EA0C6A51FD9670F00955019 /* colourCodeGenDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = colourCodeGenDataModel.h; sourceTree = "<group>"; };
+		9EA0C6A61FD9670F00955019 /* colourCodeGenDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = colourCodeGenDataModel.m; sourceTree = "<group>"; };
+		9EA0C6F91FD9D4A700955019 /* ResistorImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ResistorImage.png; sourceTree = "<group>"; };
 		9ED0512B1FD2F6C500F35ADB /* Sketch_Block.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sketch_Block.ttf; sourceTree = "<group>"; };
 		9ED0512F1FD2FCBB00F35ADB /* Button.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.PNG; sourceTree = "<group>"; };
 		9ED051311FD30E0C00F35ADB /* seriesRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = seriesRViewController.h; path = ../seriesRViewController.h; sourceTree = "<group>"; };
@@ -221,6 +226,7 @@
 		9E875CC71FD2EB6D007F500C /* Images and Files */ = {
 			isa = PBXGroup;
 			children = (
+				9EA0C6F91FD9D4A700955019 /* ResistorImage.png */,
 				9E2FA3CD1FD318110001C5E0 /* seriesRcircuit.png */,
 				9E2FA3DA1FD34CB60001C5E0 /* parallelRcircuit.PNG */,
 				9E2FA3D81FD34CB60001C5E0 /* ohmsLcircuit.PNG */,
@@ -299,6 +305,8 @@
 				9EE1B0D81FD80C5300EAA14F /* colourCodeGenInstructViewController.m */,
 				9EE0F9B81FD43E4E00C0703D /* colourCodeGenViewController.h */,
 				9EE0F9B91FD43E4E00C0703D /* colourCodeGenViewController.m */,
+				9EA0C6A51FD9670F00955019 /* colourCodeGenDataModel.h */,
+				9EA0C6A61FD9670F00955019 /* colourCodeGenDataModel.m */,
 			);
 			name = colourCodeGen;
 			sourceTree = "<group>";
@@ -416,6 +424,7 @@
 				9ED051301FD2FCBB00F35ADB /* Button.PNG in Resources */,
 				9E2FA3D21FD32CB70001C5E0 /* InstructionButton.PNG in Resources */,
 				9ED0512C1FD2F6C500F35ADB /* Sketch_Block.ttf in Resources */,
+				9EA0C6FA1FD9D4A700955019 /* ResistorImage.png in Resources */,
 				9E875CA21FD2E730007F500C /* LaunchScreen.storyboard in Resources */,
 				9E875C9F1FD2E730007F500C /* Assets.xcassets in Resources */,
 				9E23ED4B1FD589F7006E6562 /* Button4.PNG in Resources */,
@@ -468,6 +477,7 @@
 				9E23ED4E1FD5A224006E6562 /* parallelRDataModel.m in Sources */,
 				9EE1B0D31FD80C0E00EAA14F /* parallelRInstructViewController.m in Sources */,
 				9E875C941FD2E72F007F500C /* main.m in Sources */,
+				9EA0C6A71FD9670F00955019 /* colourCodeGenDataModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

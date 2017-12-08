@@ -5,6 +5,7 @@
 //  Created by Rohan Garg on 02/12/2017.
 //  Copyright © 2017 University of Leeds. All rights reserved.
 //
+//  This ohmsLawViewController contains the Ohm's Law Calculator
 
 #import "ohmsLawViewController.h"
 
@@ -15,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     // Calls Function to set Background image
     (void) [self setBackground];
@@ -26,7 +26,7 @@
     // Defining unit array - used in ohmsLawInput1Multiplier & ohmsLawInput2Multiplier pickers
     self.multiplierPrefix = @[@" n",@" µ",@" m",@"  ",@" k",@" M",@" G"];
     
-    // Display Decimal Pad Keyboard Type
+    // Display Decimal Pad Keyboard Type when User accesses Input Text Fields
     self.ohmsLawInput1TextField.keyboardType = UIKeyboardTypeDecimalPad;
     self.ohmsLawInput2TextField.keyboardType = UIKeyboardTypeDecimalPad;
     
@@ -74,7 +74,13 @@
     self.view.backgroundColor = backgroundColor;
 }
 
-// Function to set Formula, Output Calculation Type and Units, Input Label, Input Unit Label depending on ohmsLawCalcPicker value selected by user;
+/*
+ Function to set Formula, Output Calculation Type and Units, Input Label, Input Unit Label depending on ohmsLawCalcPicker value selected by user;
+ 
+ Case (Picker Row)  Calculation Type   Input 1     Input 2
+ 0                  Voltage            Current     Resistance
+ 1                  Current            Voltage     Resistance
+ 2                  Resistance         Voltage     Current            */
 - (void) setOhmsLawInputLabel {
     if ([self.ohmsLawCalcPicker selectedRowInComponent:0] == 0) {
         self.ohmsLawFormulaLabel.text = @"Formula: V = I x R";
@@ -84,7 +90,7 @@
         self.ohmsLawInput1UnitLabel.text = @"A";
         self.ohmsLawInput2Label.text = @"Resistance:";
         self.ohmsLawInput2UnitLabel.text = @"Ω";
-
+        
     } else if ([self.ohmsLawCalcPicker selectedRowInComponent:0] == 1) {
         self.ohmsLawFormulaLabel.text = @"Formula: I = V ÷ R";
         self.ohmsLawOutputCalcType = @"Current";
@@ -102,35 +108,44 @@
         self.ohmsLawInput1UnitLabel.text = @"V";
         self.ohmsLawInput2Label.text = @"Current:";
         self.ohmsLawInput2UnitLabel.text = @"A";
-
+        
     }
 }
 
-// Function to determine Output Label's appropriate Multiplier units. The function divides the output value by 10^-9 to 10^9 to determine if the result is between 1 and 1000. If so, the divisor is the multiplier unit and the result is the output label value.
+// Function to determine Output Label's appropriate Multiplier units.
 - (void) setOhmsLawOutputLabel {
-    if (self.ohmsLawObject.outputValue/pow(10,-9) >= 1  && self.ohmsLawObject.outputValue/pow(10,-9) < 1000) {
-        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f n%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,-9), self.ohmsLawOutputUnit];
-    } else if (self.ohmsLawObject.outputValue/pow(10,-6) >= 1  && self.ohmsLawObject.outputValue/pow(10,-6) < 1000) {
-        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f µ%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,-6), self.ohmsLawOutputUnit];
-    } else if (self.ohmsLawObject.outputValue/pow(10,-3) >= 1 && self.ohmsLawObject.outputValue/pow(10,-3) < 1000) {
-        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f m%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,-3), self.ohmsLawOutputUnit];
-    } else if (self.ohmsLawObject.outputValue/pow(10,3) >= 1 && self.ohmsLawObject.outputValue/pow(10,3) < 1000) {
-        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f k%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,3), self.ohmsLawOutputUnit];
-    } else if (self.ohmsLawObject.outputValue/pow(10,6) >= 1 && self.ohmsLawObject.outputValue/pow(10,6) < 1000) {
-        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f M%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,6), self.ohmsLawOutputUnit];
-    } else if (self.ohmsLawObject.outputValue/pow(10,9) >= 1) {
-        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f G%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,9), self.ohmsLawOutputUnit];
+    
+    //  Display Output Label as "Invalid Input" IF User Input 2 Text Field = 0 when Calculating Resistance or Current
+    if (([self.ohmsLawCalcPicker selectedRowInComponent:0] == 1 || [self.ohmsLawCalcPicker selectedRowInComponent:0] == 2) && self.ohmsLawObject.input2Value == 0) {
+        self.ohmsLawOutputLabel.text = @"Invalid Input";
+        
+        // ELSE, divide the output value by 10^-9 to 10^9 to determine if the result is between 1 and 1000. If so, the divisor is the multiplier unit and the result is the output label value.
     } else {
-        self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f %@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue, self.ohmsLawOutputUnit];
+        if (self.ohmsLawObject.outputValue/pow(10,-9) >= 1  && self.ohmsLawObject.outputValue/pow(10,-9) < 1000) {
+            self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f n%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,-9), self.ohmsLawOutputUnit];
+        } else if (self.ohmsLawObject.outputValue/pow(10,-6) >= 1  && self.ohmsLawObject.outputValue/pow(10,-6) < 1000) {
+            self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f µ%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,-6), self.ohmsLawOutputUnit];
+        } else if (self.ohmsLawObject.outputValue/pow(10,-3) >= 1 && self.ohmsLawObject.outputValue/pow(10,-3) < 1000) {
+            self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f m%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,-3), self.ohmsLawOutputUnit];
+        } else if (self.ohmsLawObject.outputValue/pow(10,3) >= 1 && self.ohmsLawObject.outputValue/pow(10,3) < 1000) {
+            self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f k%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,3), self.ohmsLawOutputUnit];
+        } else if (self.ohmsLawObject.outputValue/pow(10,6) >= 1 && self.ohmsLawObject.outputValue/pow(10,6) < 1000) {
+            self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f M%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,6), self.ohmsLawOutputUnit];
+        } else if (self.ohmsLawObject.outputValue/pow(10,9) >= 1) {
+            self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f G%@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue/pow(10,9), self.ohmsLawOutputUnit];
+        } else {
+            self.ohmsLawOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f %@", self.ohmsLawOutputCalcType, self.ohmsLawObject.outputValue, self.ohmsLawOutputUnit];
+        }
     }
 }
 
-/* Function to:
- 1) Display Alert if both, Voltage and Resistance or Voltage and Current, is set to 0 when calculating Current or Resistance, respectively
- 2) Display Alert if Resistance or Current is set to 0 when calculating Current or Resistance, respectively */
+// Function to Display Alert
 - (void) cautionR {
     
+    // 1) Display Alert if both, Voltage and Resistance or Voltage and Current, is set to 0 when calculating Current or Resistance, respectively
     if (([self.ohmsLawCalcPicker selectedRowInComponent:0] == 1 || [self.ohmsLawCalcPicker selectedRowInComponent:0] == 2) && (self.ohmsLawObject.input1Value == 0 && self.ohmsLawObject.input2Value == 0)) {
+        
+        // Source: http://nshipster.com/uialertcontroller/
         UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle: @"Caution" message: [NSString stringWithFormat:@"You have chosen your Voltage as 0 V and %@ as 0 %@. This will always produce an undefined result that is not a number.", [self.ohmsLawInput2Label.text substringToIndex:self.ohmsLawInput2Label.text.length-1], self.ohmsLawInput2UnitLabel.text] preferredStyle:UIAlertControllerStyleAlert];
         
         // Note (see above) : [self.ohmsLawInput2Label.text substringToIndex:self.ohmsLawInput2Label.text.length-1]
@@ -142,13 +157,16 @@
         [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
     }
     
+    // 2) Display Alert if Resistance or Current is set to 0 when calculating Current or Resistance, respectively
     if (([self.ohmsLawCalcPicker selectedRowInComponent:0] == 1 || [self.ohmsLawCalcPicker selectedRowInComponent:0] == 2) && self.ohmsLawObject.input2Value == 0) {
+        
+        // Source: http://nshipster.com/uialertcontroller/
         UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle:@"Caution" message:[NSString stringWithFormat:@"You have chosen your %@ as 0 %@. This will always produce an infinite %@.", [self.ohmsLawInput2Label.text substringToIndex:self.ohmsLawInput2Label.text.length-1], self.ohmsLawInput2UnitLabel.text, self.ohmsLawOutputCalcType] preferredStyle:UIAlertControllerStyleAlert];
         
         // Note (see above) : [self.ohmsLawInput2Label.text substringToIndex:self.ohmsLawInput2Label.text.length-1]
         // Used to remove ":" at the end of the input2Label
         // Source: https://stackoverflow.com/questions/1082178/objective-c-remove-last-character-from-string
-
+        
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
         [textFieldLimitAlert addAction:ok];
         [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
@@ -156,14 +174,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 #pragma mark - Picker Data Source
@@ -191,6 +209,7 @@
     UILabel* pickerLabel = (UILabel *)view;
     
     // Customising PickerView Label Appearance
+    // 1) Calculation Type Picker
     if ([ pickerView isEqual: self.ohmsLawCalcPicker]) {
         if (!pickerLabel) {
             pickerLabel = [[UILabel alloc] init];
@@ -198,6 +217,7 @@
             pickerLabel.textColor = [UIColor blackColor];
             pickerLabel.textAlignment = NSTextAlignmentCenter;
         }
+        // 2) Multiplier Units Picker
     } else {
         if (!pickerLabel) {
             pickerLabel = [[UILabel alloc] init];
@@ -207,7 +227,7 @@
         }
     }
     
-    //Assigning PickerView Label Text
+    // Assigning PickerView Label Text for ohmsLawCalcPicker
     if ([pickerView isEqual: self.ohmsLawCalcPicker]) {
         if (row == 0) {
             pickerLabel.text = @"Calculate Voltage";
@@ -216,13 +236,14 @@
         } else {
             pickerLabel.text = @"Calculate Resistance";
         }
+    // Assigning PickerView Label Text for the multiplier pickers
     } else {
-            pickerLabel.text = self.multiplierPrefix[row];
+        pickerLabel.text = self.multiplierPrefix[row];
     }
     return pickerLabel;
 }
 
-// Matching Row Index with Column to access Value
+// Assigning Picker Row Index to appropriate variables for use by Data Model Object
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     self.ohmsLawObject.calcType = [self.ohmsLawCalcPicker selectedRowInComponent:0];
     self.ohmsLawObject.input1Multiplier = [self.ohmsLawInput1Multiplier selectedRowInComponent:0];
@@ -268,22 +289,25 @@
 }
 // ---------------------------------------------------------------------------------------------------
 
+#pragma mark - IBAction
 
 - (IBAction)ohmsLawCalcButtonPressed:(UIButton *)sender {
     
-    // Hide Keyboard if Calculate Button Pressed
+    // Hides Keyboard if Calculate Button Pressed
     [[self ohmsLawInput1TextField] resignFirstResponder];
     [[self ohmsLawInput2TextField] resignFirstResponder];
     
-    // Assign User Input Values to Object Variables
+    // Assigning User Input Values to Object Variables
     self.ohmsLawObject.input1Value = [self.ohmsLawInput1TextField.text doubleValue];
     self.ohmsLawObject.input2Value = [self.ohmsLawInput2TextField.text doubleValue];
     
     // Calls Function to Display Alert if Resistance or Current is set to 0 when calculating Current or Resistance, respectively
     (void) [self cautionR];
     
-    // Get Calculated Value from Object and display on Output Label
+    // Get Calculated Value from Object
     (void) [[self ohmsLawObject] calcFinalValue];
+    
+    // Calls Function to determine Output Label's appropriate multiplier units and display output on Output Label
     (void) [self setOhmsLawOutputLabel];
 }
 

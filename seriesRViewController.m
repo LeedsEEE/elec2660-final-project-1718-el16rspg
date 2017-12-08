@@ -5,6 +5,7 @@
 //  Created by Rohan Garg on 02/12/2017.
 //  Copyright © 2017 University of Leeds. All rights reserved.
 //
+//  This seriesRViewController contains the Series Resistance Calculator
 
 #import "seriesRViewController.h"
 
@@ -16,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     // Calls Function to set Background image
     (void) [self setBackground];
@@ -24,7 +24,7 @@
     // Initialise Object of seriesRDataModel Class
     self.seriesRObject = [[seriesRDataModel alloc] init];
     
-    // Display Decimal Pad Keyboard Type
+    // Display Decimal Pad Keyboard Type when User accesses Input Text Fields
     self.seriesR1InputTextField.keyboardType = UIKeyboardTypeDecimalPad;
     self.seriesR2InputTextField.keyboardType = UIKeyboardTypeDecimalPad;
     self.seriesR3InputTextField.keyboardType = UIKeyboardTypeDecimalPad;
@@ -46,7 +46,7 @@
     [self.seriesR1InputMultiplier selectRow:3 inComponent:0 animated:NO];
     [self.seriesR2InputMultiplier selectRow:3 inComponent:0 animated:NO];
     [self.seriesR3InputMultiplier selectRow:3 inComponent:0 animated:NO];
-
+    
     // Selecting Default Row to be used for calculations when User does NOT scroll the Picker
     [self pickerView:self.seriesR1InputMultiplier didSelectRow:3 inComponent:0];
     [self pickerView:self.seriesR2InputMultiplier didSelectRow:3 inComponent:0];
@@ -75,7 +75,7 @@
     self.view.backgroundColor = backgroundColor;
 }
 
-// Function to determine Output Label's appropriate multiplier units
+// Function to determine Output Label's appropriate Multiplier units. The function divides the output value by 10^-9 to 10^9 to determine if the result is between 1 and 1000. If so, the divisor is the multiplier unit and the result is the output label value.
 - (void) setSeriesROutputLabel {
     if (self.seriesRObject.RFinalValue/pow(10,-9) >= 1  && self.seriesRObject.RFinalValue/pow(10,-9) < 1000) {
         self.seriesROutputLabel.text = [NSString stringWithFormat: @"R = %.3f nΩ", self.seriesRObject.RFinalValue/pow(10,-9)];
@@ -96,14 +96,14 @@
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 #pragma mark - Picker Data Source
@@ -150,11 +150,10 @@
     } else {
         multiplierPickerLabel.text = @"GΩ";
     }
-    
     return multiplierPickerLabel;
 }
 
-// Matching Row Index with Column to access Value
+// Assigning Picker Row Index to appropriate variables for use by Data Model Object
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     self.seriesRObject.R1Multiplier = [self.seriesR1InputMultiplier selectedRowInComponent:0];
     self.seriesRObject.R2Multiplier = [self.seriesR2InputMultiplier selectedRowInComponent:0];
@@ -180,11 +179,11 @@
             // Source: http://nshipster.com/uialertcontroller/
             // ---------------------------------------------------------------------------------------
             UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle:@"Character Limit Reached!" message:@"You may only enter a maximum of 10 characters per text field. Perhaps, you may want to consider using the multiplier picker to change the units." preferredStyle:UIAlertControllerStyleAlert];
-
+            
             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
-
+            
             [textFieldLimitAlert addAction:ok];
-
+            
             [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
             // ---------------------------------------------------------------------------------------
             
@@ -200,22 +199,24 @@
 
 - (IBAction)seriesRCalcButtonPressed:(UIButton *)sender {
     
-    // Hide Keyboard if Calculate Button Pressed
+    // Hides Keyboard if Calculate Button Pressed
     [[self seriesR1InputTextField] resignFirstResponder];
     [[self seriesR2InputTextField] resignFirstResponder];
     [[self seriesR3InputTextField] resignFirstResponder];
     
-    // Assign User Input Values to Object Variables
+    // Assigning User Input Values to Object Variables
     self.seriesRObject.R1Value = [self.seriesR1InputTextField.text doubleValue];
     self.seriesRObject.R2Value = [self.seriesR2InputTextField.text doubleValue];
     self.seriesRObject.R3Value = [self.seriesR3InputTextField.text doubleValue];
     
-    // Get Calculated Value from Object and display on Output Label
+    // Get Calculated Value from Object
     (void) [[self seriesRObject] calcRFinalValue];
+    
+    // Calls Function to determine Output Label's appropriate multiplier units and display output on Output Label
     (void) [self setSeriesROutputLabel];
 }
 
-// Hide Keyboard when User touches outside Keyboard
+// Hides Keyboard when User touches outside Keyboard
 - (IBAction)hideKeyboardButton:(UIButton *)sender {
     if (self.seriesR1InputTextField.isFirstResponder) {
         [[self seriesR1InputTextField] resignFirstResponder];

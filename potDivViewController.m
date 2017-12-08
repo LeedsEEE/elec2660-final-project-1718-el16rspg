@@ -5,6 +5,7 @@
 //  Created by Rohan Garg on 02/12/2017.
 //  Copyright © 2017 University of Leeds. All rights reserved.
 //
+//  This potDivViewController contains the Potential Divider Calculator
 
 #import "potDivViewController.h"
 
@@ -16,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     // Calls Function to set Background image
     (void) [self setBackground];
@@ -27,7 +27,7 @@
     // Defining unit array - used in potDivInput1Multiplier & potDivInput2Multiplier pickers
     self.multiplierPrefix = @[@" n",@" µ",@" m",@"  ",@" k",@" M",@" G"];
     
-    // Display Decimal Pad Keyboard Type
+    // Display Decimal Pad Keyboard Type when User accesses Input Text Fields
     self.potDivInput1TextField.keyboardType = UIKeyboardTypeDecimalPad;
     self.potDivInput2TextField.keyboardType = UIKeyboardTypeDecimalPad;
     self.potDivInput3TextField.keyboardType = UIKeyboardTypeDecimalPad;
@@ -79,7 +79,14 @@
     self.view.backgroundColor = backgroundColor;
 }
 
-// Function to set Formula, Output Calculation Type and Units, Input Label, Input Unit Label depending on potDivCalcPicker value selected by user;
+/* Function to set Formula, Output Calculation Type and Units, Input Label, Input Unit Label depending on potDivCalcPicker value selected by user;
+
+Table indicating how the Input Values change with different Output Value selections;
+ Component#  Output  Input1  Input2  Input3
+ 0           Vout    Vin     R1      R2
+ 1           Vin     Vout    R1      R2
+ 2           R1      Vin     Vout    R2
+ 3           R2      Vin     Vout    R1  */
 - (void) setpotDivInputLabel {
     if ([self.potDivCalcPicker selectedRowInComponent:0] == 0) {
         self.potDivFormulaLabel.text = @"Formula: Vout = Vin (R2 / (R1 + R2)";
@@ -128,18 +135,18 @@
     }
 }
 
-// Function to determine Output Label's appropriate Multiplier units. The function divides the output value by 10^-9 to 10^9 to determine if the result is between 1 and 1000. If so, the divisor is the multiplier unit and the result is the output label value.
+// Function to determine Output Label's appropriate Multiplier units.
 - (void) setpotDivOutputLabel {
-    
-    if ([self.potDivCalcPicker selectedRowInComponent:0] == 0 && (self.potDivObject.input2Value == 0 && self.potDivObject.input3Value == 0)) {
-        self.potDivOutputLabel.text = @"Vout = 0 V (Short)";
-        
-    } else if ([self.potDivCalcPicker selectedRowInComponent:0] == 1 && (self.potDivObject.input3Value == 0)) {
-        self.potDivOutputLabel.text = @"Vin = nan V (Short)";
-        
-    } else if ([self.potDivCalcPicker selectedRowInComponent:0] >= 2 && (self.potDivObject.input1Value < self.potDivObject.input2Value)) {
+
+    // IF any text field = 0 or blank; potDivOutputLabel displays "Invalid Input"
+    if (self.potDivObject.input1Value == 0 || self.potDivObject.input2Value == 0 || self.potDivObject.input3Value == 0) {
         self.potDivOutputLabel.text = @"Invalid Input";
-    
+        
+    // ELSE, IF Vout >= Vin display "Invalid Input"
+    } else if ([self.potDivCalcPicker selectedRowInComponent:0] >= 2 && (self.potDivObject.input2Value >= self.potDivObject.input1Value)) {
+        self.potDivOutputLabel.text = @"Invalid Input";
+        
+    // ELSE, divide the output value by 10^-9 to 10^9 to determine if the result is between 1 and 1000. If so, the divisor is the multiplier unit and the result is the output label value.
     } else {
         if (self.potDivObject.outputValue/pow(10,-9) >= 1  && self.potDivObject.outputValue/pow(10,-9) < 1000) {
             self.potDivOutputLabel.text = [NSString stringWithFormat: @"%@ = %.3f n%@", self.potDivOutputCalcType, self.potDivObject.outputValue/pow(10,-9), self.potDivOutputUnit];
@@ -161,43 +168,27 @@
 
 
  
-/* Function to:
- 1) Display Alert if both, Voltage and Resistance or Voltage and Current, is set to 0 when calculating Current or Resistance, respectively
- 2) Display Alert if Resistance or Current is set to 0 when calculating Current or Resistance, respectively */
-
+// Function to Display Alert
 - (void) cautionR {
     
-    if ([self.potDivCalcPicker selectedRowInComponent:0] == 0 && (self.potDivObject.input2Value == 0 && self.potDivObject.input3Value == 0)) {
-        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle: @"Caution" message: @"As R1 and R2 are 0 Ω, Vin has been short circuited. Hence, Vout will theoretically be 0 V." preferredStyle:UIAlertControllerStyleAlert];
+    // 1) Display Alert IF any text field = 0 or blank;
+    if (self.potDivObject.input1Value == 0 || self.potDivObject.input2Value == 0 || self.potDivObject.input3Value == 0) {
+        
+        // Source: http://nshipster.com/uialertcontroller/
+        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle: @"Invalid Input" message: @"Please do not enter 0 or leave any text field blank. Please try again." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+        [textFieldLimitAlert addAction:ok];
+        [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
+        
+    // 2) Display Alert IF Vout >= Vin;
+    } else if ([self.potDivCalcPicker selectedRowInComponent:0] >= 2 && (self.potDivObject.input2Value >= self.potDivObject.input1Value)) {
+        
+        // Source: http://nshipster.com/uialertcontroller/
+        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle: @"Invalid Input" message: @"Vin cannot be lesser than or equal to Vout. Please try again. " preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
         [textFieldLimitAlert addAction:ok];
         [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
     }
-
-    if ([self.potDivCalcPicker selectedRowInComponent:0] == 1 && (self.potDivObject.input2Value == 0 && self.potDivObject.input3Value == 0)) {
-        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle: @"Caution" message: @"As R1 and R2 are 0 Ω, Vin has been short circuited. Hence, Vin is undefined." preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
-        [textFieldLimitAlert addAction:ok];
-        [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
-    }
-    
-    if ([self.potDivCalcPicker selectedRowInComponent:0] == 1 && (self.potDivObject.input2Value != 0 && self.potDivObject.input3Value == 0)) {
-        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle: @"Caution" message: @"As R2 is 0 Ω, Vout has been short circuited. Hence, Vin is undefined." preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
-        [textFieldLimitAlert addAction:ok];
-        [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
-    }
-    
-    if ([self.potDivCalcPicker selectedRowInComponent:0] >= 2 && (self.potDivObject.input1Value< self.potDivObject.input2Value)) {
-        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle: @"Invalid Input" message: @"In a passive circuit such as the potential divider, Vout cannot be greater than Vin. Please try entering different values." preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
-        [textFieldLimitAlert addAction:ok];
-        [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
-    }
-    
-    
-    
-    
 }
 
 /*
@@ -236,6 +227,7 @@
     UILabel* pickerLabel = (UILabel *)view;
     
     // Customising PickerView Label Appearance
+    // 1) Calculation Type Picker
     if ([ pickerView isEqual: self.potDivCalcPicker]) {
         if (!pickerLabel) {
             pickerLabel = [[UILabel alloc] init];
@@ -243,6 +235,7 @@
             pickerLabel.textColor = [UIColor blackColor];
             pickerLabel.textAlignment = NSTextAlignmentCenter;
         }
+    // 2) Multiplier Units Picker
     } else {
         if (!pickerLabel) {
             pickerLabel = [[UILabel alloc] init];
@@ -252,7 +245,7 @@
         }
     }
     
-    //Assigning PickerView Label Text
+    //Assigning PickerView Label Text for potDivCalcPicker
     if ([pickerView isEqual: self.potDivCalcPicker]) {
         if (row == 0) {
             pickerLabel.text = @"Calculate Vout";
@@ -263,13 +256,14 @@
         } else {
             pickerLabel.text = @"Calculate R2";
         }
+    // Assigning PickerView Label Text for the multiplier pickers
     } else {
         pickerLabel.text = self.multiplierPrefix[row];
     }
     return pickerLabel;
 }
 
-// Matching Row Index with Column to access Value
+// Assigning Picker Row Index to appropriate variables for use by Data Model Object
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     self.potDivObject.calcType = [self.potDivCalcPicker selectedRowInComponent:0];
     self.potDivObject.input1Multiplier = [self.potDivInput1Multiplier selectedRowInComponent:0];
@@ -279,7 +273,6 @@
     // Calling function to change Ohms Law Input Label
     (void) [self setpotDivInputLabel];
 }
-
 
 
 #pragma mark - Text Field Delegate
@@ -317,9 +310,11 @@
 // ---------------------------------------------------------------------------------------------------
 
 
+#pragma mark - IBAction
+
 - (IBAction)potDivCalcButtonPressed:(UIButton *)sender {
     
-    // Hide Keyboard if Calculate Button Pressed
+    // Hides Keyboard if Calculate Button Pressed
     [[self potDivInput1TextField] resignFirstResponder];
     [[self potDivInput2TextField] resignFirstResponder];
     [[self potDivInput3TextField] resignFirstResponder];
@@ -332,8 +327,10 @@
     // Calls Function to Display Alert
     (void) [self cautionR];
     
-    // Get Calculated Value from Object and display on Output Label
+    // Get Calculated Value from Object
     (void) [[self potDivObject] calcFinalValue];
+    
+    // Calls Function to determine Output Label's appropriate multiplier units and display output on Output Label
     (void) [self setpotDivOutputLabel];
 }
 

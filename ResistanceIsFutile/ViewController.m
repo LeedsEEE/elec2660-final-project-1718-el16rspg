@@ -5,6 +5,7 @@
 //  Created by Rohan Garg on 02/12/2017.
 //  Copyright © 2017 University of Leeds. All rights reserved.
 //
+//  This is the Main ViewController.m file of the Application containing Button based segues to the different calculators. This view is also responsible for checking the device's compatibility.
 
 #import "ViewController.h"
 
@@ -16,13 +17,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
     // Calls Function to set Background image
     (void) [self setBackground];
     
-    // Checks Device Compatibility based on screen size and creates alert ensuring only users with compatible devices can proceed to use the app by forcing others to exit application;
-    if([[UIScreen mainScreen] bounds].size.height == 667 || [[UIScreen mainScreen] bounds].size.height == 736) { nil; } else {
+    // Checks Device Compatibility based on screen size and creates alert ensuring only users with compatible devices can proceed to use the app while forcing others to exit application. Only devices with screen heights of 667 pixels (e.g. iPhone 7) and 736 pixels (e.g. iPhone 7+) are compatible.
+    if([[UIScreen mainScreen] bounds].size.height == 667 || [[UIScreen mainScreen] bounds].size.height == 736){
+        nil;
+    } else {
+        // Source: http://nshipster.com/uialertcontroller/
         UIAlertController* incompatibleDeviceAlert = [UIAlertController alertControllerWithTitle:@"Incompatible Device" message:@"This application is currently only compatible with iPhone 6, iPhone 6+, iPhone 6s, iPhone 6s+, iPhone 7, iPhone 7+, iPhone 8, and iPhone 8+. We apologise for any inconvenience caused." preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* exitApp = [UIAlertAction actionWithTitle:@"Exit Application" style:UIAlertActionStyleCancel handler: ^(UIAlertAction * action) { exit(0); }];

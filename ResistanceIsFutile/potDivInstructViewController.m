@@ -5,6 +5,7 @@
 //  Created by Rohan Garg on 06/12/2017.
 //  Copyright © 2017 University of Leeds. All rights reserved.
 //
+//  This potDivInstructViewController contains the instruction page of the Potential Divider Calculator
 
 #import "potDivInstructViewController.h"
 
@@ -16,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     // Calls Function to set Background image
     (void) [self setBackground];

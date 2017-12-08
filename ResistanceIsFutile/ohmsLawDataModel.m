@@ -47,11 +47,15 @@
         self.input2Value = self.input2Value;
     }
     
-    // Calculates Final Output Value
+    /* Calculates Final Output Value
+     calcType   Unknown     Input 1     Input 2
+     0          Voltage     Current     Resistance
+     1          Current     Voltage     Resistance
+     2          Resistance  Voltage     Current            */
     if (self.calcType == 0) {
-        self.outputValue = self.input1Value * self.input2Value;
+        self.outputValue = self.input1Value * self.input2Value; // Voltage Calculation Formula
     } else {
-        self.outputValue = self.input1Value / self.input2Value;
+        self.outputValue = self.input1Value / self.input2Value; // Current & Resistance Calculation Formula
     }
 }
 

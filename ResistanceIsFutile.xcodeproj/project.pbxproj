@@ -36,6 +36,8 @@
 		9EA0C6A41FD878D300955019 /* potDivDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA0C6A31FD878D300955019 /* potDivDataModel.m */; };
 		9EA0C6A71FD9670F00955019 /* colourCodeGenDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA0C6A61FD9670F00955019 /* colourCodeGenDataModel.m */; };
 		9EA0C6FA1FD9D4A700955019 /* ResistorImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EA0C6F91FD9D4A700955019 /* ResistorImage.png */; };
+		9EC98FD31FDA2D6E00DE0F19 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EC98FD21FDA2D6E00DE0F19 /* MessageUI.framework */; };
+		9EC98FD51FDA9C0900DE0F19 /* README_Sources.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9EC98FD41FDA9C0900DE0F19 /* README_Sources.txt */; };
 		9ED0512C1FD2F6C500F35ADB /* Sketch_Block.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9ED0512B1FD2F6C500F35ADB /* Sketch_Block.ttf */; };
 		9ED051301FD2FCBB00F35ADB /* Button.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9ED0512F1FD2FCBB00F35ADB /* Button.PNG */; };
 		9ED051331FD30E0C00F35ADB /* seriesRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED051321FD30E0C00F35ADB /* seriesRViewController.m */; };
@@ -110,6 +112,8 @@
 		9EA0C6A51FD9670F00955019 /* colourCodeGenDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = colourCodeGenDataModel.h; sourceTree = "<group>"; };
 		9EA0C6A61FD9670F00955019 /* colourCodeGenDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = colourCodeGenDataModel.m; sourceTree = "<group>"; };
 		9EA0C6F91FD9D4A700955019 /* ResistorImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ResistorImage.png; sourceTree = "<group>"; };
+		9EC98FD21FDA2D6E00DE0F19 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		9EC98FD41FDA9C0900DE0F19 /* README_Sources.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README_Sources.txt; sourceTree = "<group>"; };
 		9ED0512B1FD2F6C500F35ADB /* Sketch_Block.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sketch_Block.ttf; sourceTree = "<group>"; };
 		9ED0512F1FD2FCBB00F35ADB /* Button.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.PNG; sourceTree = "<group>"; };
 		9ED051311FD30E0C00F35ADB /* seriesRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = seriesRViewController.h; path = ../seriesRViewController.h; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EC98FD31FDA2D6E00DE0F19 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,10 +163,12 @@
 		9E875C861FD2E72F007F500C = {
 			isa = PBXGroup;
 			children = (
+				9EC98FD41FDA9C0900DE0F19 /* README_Sources.txt */,
 				9E875C911FD2E72F007F500C /* ResistanceIsFutile */,
 				9E875CAB1FD2E731007F500C /* ResistanceIsFutileTests */,
 				9E875CB61FD2E731007F500C /* ResistanceIsFutileUITests */,
 				9E875C901FD2E72F007F500C /* Products */,
+				9EC98FD11FDA2D6E00DE0F19 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -244,6 +251,14 @@
 				9ED0512B1FD2F6C500F35ADB /* Sketch_Block.ttf */,
 			);
 			name = "Images and Files";
+			sourceTree = "<group>";
+		};
+		9EC98FD11FDA2D6E00DE0F19 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9EC98FD21FDA2D6E00DE0F19 /* MessageUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		9EE0F9B41FD43DE000C0703D /* seriesR */ = {
@@ -435,6 +450,7 @@
 				9E23ED451FD58156006E6562 /* Scroll2.png in Resources */,
 				9E2FA3CE1FD318110001C5E0 /* seriesRcircuit.png in Resources */,
 				9E2FA3DC1FD34CB60001C5E0 /* volDivcircuit.PNG in Resources */,
+				9EC98FD51FDA9C0900DE0F19 /* README_Sources.txt in Resources */,
 				9E23ED551FD77069006E6562 /* blackboard2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

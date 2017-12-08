@@ -12,7 +12,6 @@
 
 -(void) calcFinalValue; {
 
-    
     // Adjusts Input1 Values to account for Units (Multiplier)
     if (self.input1Multiplier == 0) {
         self.input1Value = self.input1Value*pow(10,-9);
@@ -64,33 +63,30 @@
         self.input3Value = self.input3Value;
     }
     
-    
-    
-    // Table indicating how the Input Values change with different Output Value selections;
-    // Component#   Output  Input1  Input2  InputVin3
-    //  0           Vout    Vin     R1      R2
-    //  1           Vin     Vout    R1      R2
-    //  2           R1      Vin     Vout    R2
-    //  3           R2      Vin     Vout    R1
-    
-    
     // Calculates Final Output Value
-    if (self.calcType == 0) {   // Calculating Vout
+    // Vout = Vin (R2 / (R1 + R2))
+    if (self.calcType == 0) {           // Calculating Vout
         self.outputValue = self.input1Value * (self.input3Value / (self.input2Value + self.input3Value));
-        // Vout = Vin (R2 / (R1 + R2))
-    
+
+    // Vin = Vout ((R1 + R2) / R2)
     } else if (self.calcType == 1) {    // Calculating Vin
         self.outputValue = self.input1Value * ((self.input2Value + self.input3Value) / self.input3Value);
-        // Vin = Vout ((R1 + R2) / R2)
-    
+
+    // R1 = R2 ((Vin - Vout) / Vout)
     } else if (self.calcType == 2) {    // Calculating R1
         self.outputValue = self.input3Value * ((self.input1Value - self.input2Value) / self.input2Value);
-        // R1 = R2 ((Vin - Vout) / Vout)
-    
-    } else {    // Calculating R2
+
+    // R2 = R1 (Vout / (Vin - Vout))
+    } else {                            // Calculating R2
         self.outputValue = self.input3Value * (self.input2Value / (self.input1Value - self.input2Value));
-        // R2 = R1 (Vout / (Vin - Vout))
     }
 }
+
+/* Table indicating how the Input Values change with different Output Value selections;
+ Component#  Output  Input1  Input2  Input3
+ 0           Vout    Vin     R1      R2
+ 1           Vin     Vout    R1      R2
+ 2           R1      Vin     Vout    R2
+ 3           R2      Vin     Vout    R1  */
 
 @end

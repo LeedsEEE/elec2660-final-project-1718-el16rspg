@@ -5,35 +5,7 @@
 //  Created by Rohan Garg on 07/12/2017.
 //  Copyright © 2017 University of Leeds. All rights reserved.
 //
-
-/*
- E12 Series	Midpoint		E24 Series	Midpoint
- 1                          1
- 1.2        1.1             1.1         1.05
- 1.5        1.35            1.2         1.15
- 1.8        1.65            1.3         1.25
- 2.2        2               1.5         1.4
- 2.7        2.45            1.6         1.55
- 3.3        3               1.8         1.7
- 3.9        3.6             2           1.9
- 4.7        4.3             2.2         2.1
- 5.6        5.15            2.4         2.3
- 6.8        6.2             2.7         2.55
- 8.2        7.5             3           2.85
- 10         9.1             3.3         3.15
- 3.6        3.45
- 3.9        3.75
- 4.3        4.1
- 4.7        4.5
- 5.1        4.9
- 5.6        5.35
- 6.2        5.9
- 6.8        6.5
- 7.5        7.15
- 8.2        7.85
- 9.1        8.65
- 10         9.55
- */
+//  Data Model Class to perform NPV & Colour Code Calculations
 
 #import "colourCodeGenDataModel.h"
 
@@ -41,9 +13,14 @@
 
 - (void) calcNPVValue {
     
+    // Array Containing All Band Colours (as Objects)
+    // Source: ELEC2660 Lab 4 - File:Resistor.m (bandColourArray)
+    self.bandColourArray = [NSArray arrayWithObjects: [UIColor blackColor],[UIColor brownColor],[UIColor redColor],[UIColor orangeColor],[UIColor yellowColor],[UIColor greenColor],[UIColor blueColor],[UIColor magentaColor],[UIColor grayColor],[UIColor whiteColor],
+        [UIColor colorWithRed:0.99 green:0.76 blue:0.0 alpha:0.9],  // Gold
+        [UIColor colorWithRed:0.76 green:0.80 blue:0.80 alpha:0.9], // Silver
+        nil];
     
-    self.bandColourArray = [NSArray arrayWithObjects: [UIColor blackColor],[UIColor brownColor],[UIColor redColor],[UIColor orangeColor],[UIColor yellowColor],[UIColor greenColor],[UIColor blueColor],[UIColor magentaColor],[UIColor grayColor],[UIColor whiteColor],[UIColor colorWithRed:0.99 green:0.76 blue:0.0 alpha:0.9],[UIColor colorWithRed:0.76 green:0.80 blue:0.80 alpha:0.9],nil];
-    
+    // Array Containing All Band Colour Texts
     self.bandTextArray = @[@"Black", @"Brown" , @"Red", @"Orange", @"Yellow", @"Green", @"Blue", @"Violet", @"Gray", @"White", @"Gold", @"Silver", @" "];
 
     // Adjusts inputRValue to account for inputMultiplier Value
@@ -55,23 +32,23 @@
         self.inputRValue = self.inputRValue*pow(10,6);
     }
     
-    
-    
     // Counting inputDigitsLength (Number of Digits) in inputRValue
     self.inputDigitsLength = floor(log10(self.inputRValue)) + 1;
     
-    // Setting outputMultiplier power value
+    // Setting outputMultiplier Power value
     self.outputMultiplier = self.inputDigitsLength-2;
     
     // Truncating inputR to float value between 0 and 100
     self.sigInputRValue = self.inputRValue / pow(10,self.outputMultiplier);
     
+    // Accounting for Invalid Input from User when inputRValue = 0 or blank by setting outputNpvRValue and outputMultiplier to 0;
     if (self.inputRValue == 0.0) {
         self.outputNpvRValue = 0.0;
         self.outputMultiplier = 0;
         
-    } else {  // i.e. if self.inputRValue != 0
-        
+    // ELSE, if self.inputRValue != 0
+    // Compares sigInputRValue to a list of Midpoints between 2 NPV Values to assign the nearest outputNpvRValue; Refer to SERIES & MIDPOINTS comment just before @end (scroll down);
+    } else {    // E12 Series
         if (self.inputTolerance == 0) {
             if (self.sigInputRValue <= 11) {
                 self.outputNpvRValue = 10;
@@ -97,12 +74,11 @@
                 self.outputNpvRValue = 68;
             } else if (self.sigInputRValue <= 91) {
                 self.outputNpvRValue = 82;
-            } else {
+            } else {    // if outputNpvRValue = 100, then truncate it to 10 and add 1 to outputMultiplier (e.g. 100x10^2 = 10x10^3)
                 self.outputNpvRValue = 10;
                 self.outputMultiplier = self.outputMultiplier + 1;
             }
-            
-        } else {
+        } else {    // E24 Series
             if (self.sigInputRValue <= 10.5) {
                 self.outputNpvRValue = 10;
             } else if (self.sigInputRValue <= 11.5) {
@@ -151,7 +127,7 @@
                 self.outputNpvRValue = 82;
             } else if (self.sigInputRValue <= 95.5) {
                 self.outputNpvRValue = 91;
-            } else {
+            } else {    // if outputNpvRValue = 100, then truncate it to 10 and add 1 to outputMultiplier (e.g. 100x10^2 = 10x10^3)
                 self.outputNpvRValue = 10;
                 self.outputMultiplier = self.outputMultiplier + 1;
             }
@@ -166,5 +142,37 @@
     self.finalRValue = self.outputNpvRValue*pow(10,self.outputMultiplier);
     
 }
+
+/*  SERIES & MIDPOINTS
+The values used above are the same as below but times 10;
+Source: https://www.electronics-notes.com/articles/electronic_components/resistors/standard-resistor-values-e-series-e3-e6-e12-e24-e48-e96.php
+
+ E12        Midpoint		E24         Midpoint
+ 1                          1
+ 1.2        1.1             1.1         1.05
+ 1.5        1.35            1.2         1.15
+ 1.8        1.65            1.3         1.25
+ 2.2        2               1.5         1.4
+ 2.7        2.45            1.6         1.55
+ 3.3        3               1.8         1.7
+ 3.9        3.6             2           1.9
+ 4.7        4.3             2.2         2.1
+ 5.6        5.15            2.4         2.3
+ 6.8        6.2             2.7         2.55
+ 8.2        7.5             3           2.85
+ 10         9.1             3.3         3.15
+ 3.6        3.45
+ 3.9        3.75
+ 4.3        4.1
+ 4.7        4.5
+ 5.1        4.9
+ 6.2        5.9
+ 6.8        6.5
+ 7.5        7.15
+ 8.2        7.85
+ 9.1        8.65
+ 10         9.55
+ */
+
 
 @end

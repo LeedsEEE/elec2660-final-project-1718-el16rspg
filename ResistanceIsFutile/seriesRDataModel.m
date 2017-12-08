@@ -5,12 +5,13 @@
 //  Created by Rohan Garg on 03/12/2017.
 //  Copyright © 2017 University of Leeds. All rights reserved.
 //
-//  Data Model Class to Calculate the Series Equivalent Resistance of 3 Resistors
+//  Data Model Class of Series Resistance Calculator
 
 #import "seriesRDataModel.h"
 
 @implementation seriesRDataModel
 
+// Function to calculate final Output Value
 -(void) calcRFinalValue; {
     
     // Adjusts R1 Input Values to account for Units (Multiplier)

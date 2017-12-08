@@ -5,6 +5,7 @@
 //  Created by Rohan Garg on 02/12/2017.
 //  Copyright © 2017 University of Leeds. All rights reserved.
 //
+//  This parallelRViewController contains the Parallel Resistance Calculator
 
 #import "parallelRViewController.h"
 
@@ -16,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     // Calls Function to set Background image
     (void) [self setBackground];
@@ -24,7 +24,7 @@
     // Initialise Object of parallelRDataModel Class
     self.parallelRObject = [[parallelRDataModel alloc] init];
     
-    // Display Decimal Pad Keyboard Type
+    // Display Decimal Pad Keyboard Type when User accesses Input Text Fields
     self.parallelR1InputTextField.keyboardType = UIKeyboardTypeDecimalPad;
     self.parallelR2InputTextField.keyboardType = UIKeyboardTypeDecimalPad;
     self.parallelR3InputTextField.keyboardType = UIKeyboardTypeDecimalPad;
@@ -74,7 +74,7 @@
     self.view.backgroundColor = backgroundColor;
 }
 
-// Function to determine Output Label's appropriate multiplier units
+// Function to determine Output Label's appropriate Multiplier units. The function divides the output value by 10^-9 to 10^9 to determine if the result is between 1 and 1000. If so, the divisor is the multiplier unit and the result is the output label value.
 - (void) setParallelROutputLabel {
     if (self.parallelRObject.RFinalValue/pow(10,-9) >= 1  && self.parallelRObject.RFinalValue/pow(10,-9) < 1000) {
         self.parallelROutputLabel.text = [NSString stringWithFormat: @"R = %.3f nΩ", self.parallelRObject.RFinalValue/pow(10,-9)];
@@ -95,24 +95,31 @@
 
 
 // Function to Display Alert if R1 and/or R2 are set to 0
+// Source: http://nshipster.com/uialertcontroller/
 - (void) cautionR {
     
+    // R1 & R2 = 0
     if (self.parallelRObject.R1Value == 0 && self.parallelRObject.R2Value == 0) {
         
+        // Source: http://nshipster.com/uialertcontroller/
         UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle:@"Caution" message:@"You have chosen your R1 and R2 values as 0 Ω. This will always produce a total resistance, R, of 0 Ω. R3 may be left blank or entered as 0 if you only want to calculate the total resistance of two resistors." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
         [textFieldLimitAlert addAction:ok];
         [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
-        
+    
+    // R1 = 0
     } else if (self.parallelRObject.R1Value == 0) {
         
+        // Source: http://nshipster.com/uialertcontroller/
         UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle:@"Caution" message:@"You have chosen your R1 value as 0 Ω. This will always produce a total resistance, R, of 0 Ω. R3 may be left blank or entered as 0 if you only want to calculate the total resistance of two resistors." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
         [textFieldLimitAlert addAction:ok];
         [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
         
+    // R2 = 0
     } else if (self.parallelRObject.R2Value == 0) {
         
+        // Source: http://nshipster.com/uialertcontroller/
         UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle:@"Caution" message:@"You have chosen your R2 value as 0 Ω. This will always produce a total resistance, R, of 0 Ω. R3 may be left blank or entered as 0 if you only want to calculate the total resistance of two resistors." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
         [textFieldLimitAlert addAction:ok];
@@ -179,7 +186,7 @@
     return multiplierPickerLabel;
 }
 
-// Matching Row Index with Column to access Value
+// Assigning Picker Row Index to appropriate variables for use by Data Model Object
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     self.parallelRObject.R1Multiplier = [self.parallelR1InputMultiplier selectedRowInComponent:0];
     self.parallelRObject.R2Multiplier = [self.parallelR2InputMultiplier selectedRowInComponent:0];
@@ -225,12 +232,12 @@
 
 - (IBAction)parallelRCalcButtonPressed:(UIButton *)sender {
     
-    // Hide Keyboard if Calculate Button Pressed
+    // Hides Keyboard if Calculate Button Pressed
     [[self parallelR1InputTextField] resignFirstResponder];
     [[self parallelR2InputTextField] resignFirstResponder];
     [[self parallelR3InputTextField] resignFirstResponder];
     
-    // Assign User Input Values to Object Variables
+    // Assigning User Input Values to Object Variables
     self.parallelRObject.R1Value = [self.parallelR1InputTextField.text doubleValue];
     self.parallelRObject.R2Value = [self.parallelR2InputTextField.text doubleValue];
     self.parallelRObject.R3Value = [self.parallelR3InputTextField.text doubleValue];
@@ -238,10 +245,10 @@
     // Calls Function to Display Alert if R1 and/or R2 are set to 0
     (void) [self cautionR];
     
-    // Get Calculated Value from Object and display on Output Label
+    // Get Calculated Value from Object
     (void) [[self parallelRObject] calcRFinalValue];
     
-    // Calls Function to determine Output Label's appropriate multiplier units
+    // Calls Function to determine Output Label's appropriate multiplier units and display output on Output Label
     (void) [self setParallelROutputLabel];
 }
 

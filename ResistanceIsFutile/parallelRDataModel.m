@@ -5,13 +5,14 @@
 //  Created by Rohan Garg on 04/12/2017.
 //  Copyright © 2017 University of Leeds. All rights reserved.
 //
-//  Data Model Class to Calculate the Parallel Equivalent Resistance of 3 Resistors
+//  Data Model Class of Parallel Resistance Calculator
 
 
 #import "parallelRDataModel.h"
 
 @implementation parallelRDataModel
 
+// Function to calculate final Output Value
 -(void) calcRFinalValue; {
     
     // Adjusts R1 Input Values to account for Units (Multiplier) and Divides the adjusted value from 1 to prepare for final calculation
@@ -49,7 +50,6 @@
     }
     
     // Adjusts R3 Input Values to account for Units (Multiplier) and Divides the adjusted value from 1 to prepare for final calculation
-    
     if (self.R3Value != 0) {
         if (self.R3Multiplier == 0) {
             self.R3Value = 1/(self.R3Value*pow(10,-9));
@@ -68,8 +68,7 @@
         }
     }
     
-    // Calculates Final Equivalent Resistance of R1, R2, and R3
-    
+    // Calculates Final Equivalent Parallel Resistance of R1, R2, and R3
     if (self.R3Value == 0) {
         self.RFinalValue = 1/(self.R1Value + self.R2Value);
     } else {

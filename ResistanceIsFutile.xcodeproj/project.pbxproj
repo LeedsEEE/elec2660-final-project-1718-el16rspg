@@ -16,14 +16,12 @@
 		9E2FA3CE1FD318110001C5E0 /* seriesRcircuit.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2FA3CD1FD318110001C5E0 /* seriesRcircuit.png */; };
 		9E2FA3D01FD32CAF0001C5E0 /* BackButton.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9E2FA3CF1FD32CAF0001C5E0 /* BackButton.PNG */; };
 		9E2FA3D21FD32CB70001C5E0 /* InstructionButton.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9E2FA3D11FD32CB70001C5E0 /* InstructionButton.PNG */; };
-		9E2FA3D71FD336850001C5E0 /* Scroll.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E2FA3D61FD336850001C5E0 /* Scroll.png */; };
 		9E2FA3DB1FD34CB60001C5E0 /* ohmsLcircuit.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9E2FA3D81FD34CB60001C5E0 /* ohmsLcircuit.PNG */; };
 		9E2FA3DC1FD34CB60001C5E0 /* volDivcircuit.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9E2FA3D91FD34CB60001C5E0 /* volDivcircuit.PNG */; };
 		9E2FA3DD1FD34CB60001C5E0 /* parallelRcircuit.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9E2FA3DA1FD34CB60001C5E0 /* parallelRcircuit.PNG */; };
 		9E2FA3E01FD350800001C5E0 /* parallelRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FA3DF1FD350800001C5E0 /* parallelRViewController.m */; };
 		9E2FA3E61FD35B440001C5E0 /* potDivViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FA3E51FD35B440001C5E0 /* potDivViewController.m */; };
 		9E2FA3EC1FD369BC0001C5E0 /* ohmsLawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FA3EB1FD369BC0001C5E0 /* ohmsLawViewController.m */; };
-		9E64258E1FD799AC003BD200 /* blackboard 16_9_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E64258D1FD799AC003BD200 /* blackboard 16_9_v2.png */; };
 		9E875C941FD2E72F007F500C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E875C931FD2E72F007F500C /* main.m */; };
 		9E875C971FD2E72F007F500C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E875C961FD2E72F007F500C /* AppDelegate.m */; };
 		9E875C9A1FD2E72F007F500C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E875C991FD2E72F007F500C /* ViewController.m */; };
@@ -37,7 +35,7 @@
 		9EA0C6A71FD9670F00955019 /* colourCodeGenDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA0C6A61FD9670F00955019 /* colourCodeGenDataModel.m */; };
 		9EA0C6FA1FD9D4A700955019 /* ResistorImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EA0C6F91FD9D4A700955019 /* ResistorImage.png */; };
 		9EC98FD31FDA2D6E00DE0F19 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EC98FD21FDA2D6E00DE0F19 /* MessageUI.framework */; };
-		9EC98FD51FDA9C0900DE0F19 /* README_Sources.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9EC98FD41FDA9C0900DE0F19 /* README_Sources.txt */; };
+		9EC98FD51FDA9C0900DE0F19 /* Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9EC98FD41FDA9C0900DE0F19 /* Readme.txt */; };
 		9ED0512C1FD2F6C500F35ADB /* Sketch_Block.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9ED0512B1FD2F6C500F35ADB /* Sketch_Block.ttf */; };
 		9ED051301FD2FCBB00F35ADB /* Button.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 9ED0512F1FD2FCBB00F35ADB /* Button.PNG */; };
 		9ED051331FD30E0C00F35ADB /* seriesRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED051321FD30E0C00F35ADB /* seriesRViewController.m */; };
@@ -48,6 +46,9 @@
 		9EE1B0D31FD80C0E00EAA14F /* parallelRInstructViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1B0D21FD80C0E00EAA14F /* parallelRInstructViewController.m */; };
 		9EE1B0D61FD80C2600EAA14F /* seriesRInstructViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1B0D51FD80C2600EAA14F /* seriesRInstructViewController.m */; };
 		9EE1B0D91FD80C5300EAA14F /* colourCodeGenInstructViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1B0D81FD80C5300EAA14F /* colourCodeGenInstructViewController.m */; };
+		CA8669941FDAF97F0060C46A /* Title2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = CA8669931FDAF97F0060C46A /* Title2.PNG */; };
+		CA8669981FDAFEA20060C46A /* blackboard 16_9_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = CA8669971FDAFEA20060C46A /* blackboard 16_9_v2.png */; };
+		CA86699C1FDB038A0060C46A /* Scroll.png in Resources */ = {isa = PBXBuildFile; fileRef = CA86699B1FDB038A0060C46A /* Scroll.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +80,6 @@
 		9E2FA3CD1FD318110001C5E0 /* seriesRcircuit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seriesRcircuit.png; sourceTree = "<group>"; };
 		9E2FA3CF1FD32CAF0001C5E0 /* BackButton.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButton.PNG; sourceTree = "<group>"; };
 		9E2FA3D11FD32CB70001C5E0 /* InstructionButton.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InstructionButton.PNG; sourceTree = "<group>"; };
-		9E2FA3D61FD336850001C5E0 /* Scroll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Scroll.png; sourceTree = "<group>"; };
 		9E2FA3D81FD34CB60001C5E0 /* ohmsLcircuit.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ohmsLcircuit.PNG; sourceTree = "<group>"; };
 		9E2FA3D91FD34CB60001C5E0 /* volDivcircuit.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volDivcircuit.PNG; sourceTree = "<group>"; };
 		9E2FA3DA1FD34CB60001C5E0 /* parallelRcircuit.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parallelRcircuit.PNG; sourceTree = "<group>"; };
@@ -89,7 +89,6 @@
 		9E2FA3E51FD35B440001C5E0 /* potDivViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = potDivViewController.m; path = ../potDivViewController.m; sourceTree = "<group>"; };
 		9E2FA3EA1FD369BC0001C5E0 /* ohmsLawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ohmsLawViewController.h; path = ../ohmsLawViewController.h; sourceTree = "<group>"; };
 		9E2FA3EB1FD369BC0001C5E0 /* ohmsLawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ohmsLawViewController.m; path = ../ohmsLawViewController.m; sourceTree = "<group>"; };
-		9E64258D1FD799AC003BD200 /* blackboard 16_9_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackboard 16_9_v2.png"; sourceTree = "<group>"; };
 		9E875C8F1FD2E72F007F500C /* ResistanceIsFutile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResistanceIsFutile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E875C931FD2E72F007F500C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9E875C951FD2E72F007F500C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -113,7 +112,7 @@
 		9EA0C6A61FD9670F00955019 /* colourCodeGenDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = colourCodeGenDataModel.m; sourceTree = "<group>"; };
 		9EA0C6F91FD9D4A700955019 /* ResistorImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ResistorImage.png; sourceTree = "<group>"; };
 		9EC98FD21FDA2D6E00DE0F19 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		9EC98FD41FDA9C0900DE0F19 /* README_Sources.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README_Sources.txt; sourceTree = "<group>"; };
+		9EC98FD41FDA9C0900DE0F19 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 		9ED0512B1FD2F6C500F35ADB /* Sketch_Block.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sketch_Block.ttf; sourceTree = "<group>"; };
 		9ED0512F1FD2FCBB00F35ADB /* Button.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.PNG; sourceTree = "<group>"; };
 		9ED051311FD30E0C00F35ADB /* seriesRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = seriesRViewController.h; path = ../seriesRViewController.h; sourceTree = "<group>"; };
@@ -132,6 +131,9 @@
 		9EE1B0D51FD80C2600EAA14F /* seriesRInstructViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = seriesRInstructViewController.m; sourceTree = "<group>"; };
 		9EE1B0D71FD80C5300EAA14F /* colourCodeGenInstructViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = colourCodeGenInstructViewController.h; sourceTree = "<group>"; };
 		9EE1B0D81FD80C5300EAA14F /* colourCodeGenInstructViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = colourCodeGenInstructViewController.m; sourceTree = "<group>"; };
+		CA8669931FDAF97F0060C46A /* Title2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Title2.PNG; sourceTree = "<group>"; };
+		CA8669971FDAFEA20060C46A /* blackboard 16_9_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blackboard 16_9_v2.png"; path = "AppIcon/AppIcon.appiconset/blackboard 16_9_v2.png"; sourceTree = "<group>"; };
+		CA86699B1FDB038A0060C46A /* Scroll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Scroll.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +165,7 @@
 		9E875C861FD2E72F007F500C = {
 			isa = PBXGroup;
 			children = (
-				9EC98FD41FDA9C0900DE0F19 /* README_Sources.txt */,
+				9EC98FD41FDA9C0900DE0F19 /* Readme.txt */,
 				9E875C911FD2E72F007F500C /* ResistanceIsFutile */,
 				9E875CAB1FD2E731007F500C /* ResistanceIsFutileTests */,
 				9E875CB61FD2E731007F500C /* ResistanceIsFutileUITests */,
@@ -233,6 +235,9 @@
 		9E875CC71FD2EB6D007F500C /* Images and Files */ = {
 			isa = PBXGroup;
 			children = (
+				CA86699B1FDB038A0060C46A /* Scroll.png */,
+				CA8669971FDAFEA20060C46A /* blackboard 16_9_v2.png */,
+				CA8669931FDAF97F0060C46A /* Title2.PNG */,
 				9EA0C6F91FD9D4A700955019 /* ResistorImage.png */,
 				9E2FA3CD1FD318110001C5E0 /* seriesRcircuit.png */,
 				9E2FA3DA1FD34CB60001C5E0 /* parallelRcircuit.PNG */,
@@ -244,9 +249,7 @@
 				9E23ED461FD5863C006E6562 /* Button2.PNG */,
 				9E23ED4A1FD589F7006E6562 /* Button4.PNG */,
 				9E875CC51FD2E9A8007F500C /* Logo.png */,
-				9E2FA3D61FD336850001C5E0 /* Scroll.png */,
 				9E23ED441FD58156006E6562 /* Scroll2.png */,
-				9E64258D1FD799AC003BD200 /* blackboard 16_9_v2.png */,
 				9E23ED541FD77069006E6562 /* blackboard2.png */,
 				9ED0512B1FD2F6C500F35ADB /* Sketch_Block.ttf */,
 			);
@@ -432,14 +435,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E2FA3D71FD336850001C5E0 /* Scroll.png in Resources */,
 				9E23ED471FD5863D006E6562 /* Button2.PNG in Resources */,
+				CA8669981FDAFEA20060C46A /* blackboard 16_9_v2.png in Resources */,
 				9E875CC61FD2E9A8007F500C /* Logo.png in Resources */,
-				9E64258E1FD799AC003BD200 /* blackboard 16_9_v2.png in Resources */,
 				9ED051301FD2FCBB00F35ADB /* Button.PNG in Resources */,
 				9E2FA3D21FD32CB70001C5E0 /* InstructionButton.PNG in Resources */,
 				9ED0512C1FD2F6C500F35ADB /* Sketch_Block.ttf in Resources */,
+				CA8669941FDAF97F0060C46A /* Title2.PNG in Resources */,
 				9EA0C6FA1FD9D4A700955019 /* ResistorImage.png in Resources */,
+				CA86699C1FDB038A0060C46A /* Scroll.png in Resources */,
 				9E875CA21FD2E730007F500C /* LaunchScreen.storyboard in Resources */,
 				9E875C9F1FD2E730007F500C /* Assets.xcassets in Resources */,
 				9E23ED4B1FD589F7006E6562 /* Button4.PNG in Resources */,
@@ -450,7 +454,7 @@
 				9E23ED451FD58156006E6562 /* Scroll2.png in Resources */,
 				9E2FA3CE1FD318110001C5E0 /* seriesRcircuit.png in Resources */,
 				9E2FA3DC1FD34CB60001C5E0 /* volDivcircuit.PNG in Resources */,
-				9EC98FD51FDA9C0900DE0F19 /* README_Sources.txt in Resources */,
+				9EC98FD51FDA9C0900DE0F19 /* Readme.txt in Resources */,
 				9E23ED551FD77069006E6562 /* blackboard2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

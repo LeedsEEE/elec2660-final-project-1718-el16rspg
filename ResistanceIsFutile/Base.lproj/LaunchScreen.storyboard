@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17A405" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17B1003" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,27 +21,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="g3B-0e-EDV">
-                                <rect key="frame" x="12" y="77" width="350" height="350"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scroll2.png" translatesAutoresizingMaskIntoConstraints="NO" id="yxF-79-nSo">
+                                <rect key="frame" x="7.5" y="410" width="360" height="235"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="QAU-u0-mxs"/>
-                                    <constraint firstAttribute="width" constant="350" id="zI5-kY-0vw"/>
+                                    <constraint firstAttribute="height" constant="235" id="UVO-ii-nLV"/>
+                                    <constraint firstAttribute="width" constant="360" id="jSL-pI-WpJ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed by: Rohan Garg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fir-GU-SUq">
-                                <rect key="frame" x="56" y="533" width="262" height="26"/>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Title2.PNG" translatesAutoresizingMaskIntoConstraints="NO" id="g3B-0e-EDV">
+                                <rect key="frame" x="4.5" y="90" width="367" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="QAU-u0-mxs"/>
+                                    <constraint firstAttribute="width" constant="367" id="zI5-kY-0vw"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fir-GU-SUq">
+                                <rect key="frame" x="25" y="457" width="325" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="keb-wI-Syb"/>
+                                    <constraint firstAttribute="width" constant="325" id="vhx-MQ-wka"/>
+                                </constraints>
+                                <string key="text">Developed by:
+ 
+Rohan Garg
+SID: 201082223 
+ELEC2660 Mobile App. Project (2017/18)
+Electronic and Electrical Engineering
+University of Leeds, UK</string>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.24238485608354776" green="0.4398001269035533" blue="0.003778458100065025" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="fir-GU-SUq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5Dp-Oc-KfJ"/>
-                            <constraint firstItem="fir-GU-SUq" firstAttribute="top" secondItem="g3B-0e-EDV" secondAttribute="bottom" constant="106" id="AJM-Zc-pdG"/>
-                            <constraint firstItem="g3B-0e-EDV" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="57" id="nfo-3h-fWY"/>
-                            <constraint firstItem="g3B-0e-EDV" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="x1X-wW-dE9"/>
+                            <constraint firstItem="yxF-79-nSo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="70e-nG-01X"/>
+                            <constraint firstItem="yxF-79-nSo" firstAttribute="top" secondItem="fir-GU-SUq" secondAttribute="bottom" constant="-187" id="BDz-ce-l6B"/>
+                            <constraint firstItem="fir-GU-SUq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="TYE-nz-rfD"/>
+                            <constraint firstItem="yxF-79-nSo" firstAttribute="top" secondItem="g3B-0e-EDV" secondAttribute="bottom" constant="20" id="Zjr-nE-HpP"/>
+                            <constraint firstItem="g3B-0e-EDV" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="kGM-dn-pKY"/>
+                            <constraint firstItem="g3B-0e-EDV" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="70" id="kwS-bg-Q58"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -51,6 +71,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo.png" width="492" height="492"/>
+        <image name="Scroll2.png" width="960" height="480"/>
+        <image name="Title2.PNG" width="1228" height="711"/>
     </resources>
 </document>

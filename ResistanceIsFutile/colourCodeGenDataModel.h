@@ -17,12 +17,14 @@
 @property int inputDigitsLength;
 @property double sigInputRValue;
 @property double outputNpvRValue;
+@property double finalRValue;
 @property int outputMultiplier;
 @property int firstSigDig;
 @property int secondSigDig;
 
 @property (nonatomic, strong) NSArray *bandColourArray;
-@property (nonatomic, strong) NSArray *toleranceColourArray;
+@property (nonatomic, strong) NSArray *bandTextArray;
+
 
 -(void) calcNPVValue; // Method to calculate output value
 

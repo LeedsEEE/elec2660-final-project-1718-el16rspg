@@ -16,16 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     // Calls Function to set Background image
     (void) [self setBackground];
     
-    // Initialise Object of colourCodeGenDataModel Class
+    // Initialises Object of colourCodeGenDataModel Class
     self.colourCodeGenObject = [[colourCodeGenDataModel alloc] init];
     
     // Defining array for multiplierPicker
-    self.multiplierPrefix = @[@"nΩ",@"µΩ",@"mΩ",@"Ω",@"kΩ",@"MΩ",@"GΩ"];
+    self.multiplierArray = @[@"Ω",@"kΩ",@"MΩ"];
     
     // Display Decimal Pad Keyboard Type
     self.inputRTextField.keyboardType = UIKeyboardTypeDecimalPad;
@@ -39,11 +38,6 @@
     self.tolerancePicker.dataSource = self;
     self.tolerancePicker.delegate = self;
     
-    // Assigning Default Row to be displayed for PickerView;
-    [self.multiplierPicker selectRow:3 inComponent:0 animated:NO];
-    
-    // Selecting Default Row to be used for calculations when User does NOT scroll the Picker
-    [self pickerView:self.multiplierPicker didSelectRow:3 inComponent:0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,17 +61,119 @@
 }
 
 
-// Function to set output label value after accounting for the unit multiplier
+// Function to set Output Label & display Colour Bands
 - (void) setColourCodeGenOutputLabel; {
     
+    // Defining output label when inputRValue = 0
     if (self.colourCodeGenObject.inputRValue == 0) {
-        self.outputLabel.text = [NSString stringWithFormat: @"Enter Values & Calculate"];
+        self.outputLabel.text = @"Enter Values & Calculate";
         
-    } else {
-        self.outputLabel.text = [NSString stringWithFormat: @"NPV Resistor: \n %.1f x 10^%d Ω", self.colourCodeGenObject.outputNpvRValue, self.colourCodeGenObject.outputMultiplier];
+        // Display Alert if inputRValue = 0
+        // Source: http://nshipster.com/uialertcontroller/
+        // ---------------------------------------------------------------------------------------
+        UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle:@"Caution" message:@"Please enter a non-zero resistor value." preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+        
+        [textFieldLimitAlert addAction:ok];
+        
+        [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
+        // ---------------------------------------------------------------------------------------
+        
+    } else {    // Defining output label when inputRValue ranges from 0.1 Ω to 1 GΩ
+        
+        
+        // Setting acceptable input range - from 0.1 Ω to 1 GΩ
+        if (self.colourCodeGenObject.inputRValue >= 0.1 && self.colourCodeGenObject.inputRValue <= 1*pow(10,9)) {
+            
+            // Displaying Output Label after accounting for Multiplier and Tolerance (E12 vs E24)
+            if (self.colourCodeGenObject.inputTolerance == 0) {
+                if (self.colourCodeGenObject.finalRValue/pow(10,-3) >= 1 && self.colourCodeGenObject.finalRValue/pow(10,-3) < 1000) {
+                    self.outputLabel.text = [NSString stringWithFormat: @"E12 Series Resistor: \n %.1f mΩ", self.colourCodeGenObject.finalRValue/pow(10,-3)];
+                } else if (self.colourCodeGenObject.finalRValue/pow(10,3) >= 1 && self.colourCodeGenObject.finalRValue/pow(10,3) < 1000) {
+                    self.outputLabel.text = [NSString stringWithFormat: @"E12 Series Resistor: \n %.1f kΩ", self.colourCodeGenObject.finalRValue/pow(10,3)];
+                } else if (self.colourCodeGenObject.finalRValue/pow(10,6) >= 1 && self.colourCodeGenObject.finalRValue/pow(10,6) < 1000) {
+                    self.outputLabel.text = [NSString stringWithFormat: @"E12 Series Resistor: \n %.1f MΩ", self.colourCodeGenObject.finalRValue/pow(10,6)];
+                } else if (self.colourCodeGenObject.finalRValue/pow(10,9) >= 1 && self.colourCodeGenObject.finalRValue/pow(10,9) < 1000) {
+                    self.outputLabel.text = [NSString stringWithFormat: @"E12 Series Resistor: \n %.1f GΩ", self.colourCodeGenObject.finalRValue/pow(10,9)];
+                } else {
+                    self.outputLabel.text = [NSString stringWithFormat: @"E12 Series Resistor: \n %.1f Ω", self.colourCodeGenObject.finalRValue];
+                }
+            } else {
+                if (self.colourCodeGenObject.finalRValue/pow(10,-3) >= 1 && self.colourCodeGenObject.finalRValue/pow(10,-3) < 1000) {
+                    self.outputLabel.text = [NSString stringWithFormat: @"E24 Series Resistor: \n %.1f mΩ", self.colourCodeGenObject.finalRValue/pow(10,-3)];
+                } else if (self.colourCodeGenObject.finalRValue/pow(10,3) >= 1 && self.colourCodeGenObject.finalRValue/pow(10,3) < 1000) {
+                    self.outputLabel.text = [NSString stringWithFormat: @"E24 Series Resistor: \n %.1f kΩ", self.colourCodeGenObject.finalRValue/pow(10,3)];
+                } else if (self.colourCodeGenObject.finalRValue/pow(10,6) >= 1 && self.colourCodeGenObject.finalRValue/pow(10,6) < 1000) {
+                    self.outputLabel.text = [NSString stringWithFormat: @"E24 Series Resistor: \n %.1f MΩ", self.colourCodeGenObject.finalRValue/pow(10,6)];
+                } else if (self.colourCodeGenObject.finalRValue/pow(10,9) >= 1 && self.colourCodeGenObject.finalRValue/pow(10,9) < 1000) {
+                    self.outputLabel.text = [NSString stringWithFormat: @"E24 Series Resistor: \n %.1f GΩ", self.colourCodeGenObject.finalRValue/pow(10,9)];
+                } else {
+                    self.outputLabel.text = [NSString stringWithFormat: @"E24 Series Resistor: \n %.1f Ω", self.colourCodeGenObject.finalRValue];
+                }
+            }
+            
+            
+            // Setting Band 1 and Band 2 Colour & Text
+            self.Band1Label.backgroundColor = [self.colourCodeGenObject.bandColourArray objectAtIndex:self.colourCodeGenObject.firstSigDig];
+            self.bandTextLabel1.text = [self.colourCodeGenObject.bandTextArray objectAtIndex:self.colourCodeGenObject.firstSigDig];
+            self.Band2Label.backgroundColor = [self.colourCodeGenObject.bandColourArray objectAtIndex:self.colourCodeGenObject.secondSigDig];
+            self.bandTextLabel2.text = [self.colourCodeGenObject.bandTextArray objectAtIndex:self.colourCodeGenObject.secondSigDig];
+            
+            
+            // Adjusting outputMultiplier when it is negative to reflect appropriate Band Colour index in array
+            if (self.colourCodeGenObject.outputMultiplier == -1) {
+                self.Band3Label.backgroundColor = [self.colourCodeGenObject.bandColourArray objectAtIndex:10];  // Gold Colour
+                self.bandTextLabel3.text = [self.colourCodeGenObject.bandTextArray objectAtIndex:10];   // Gold Text
+                
+            } else if (self.colourCodeGenObject.outputMultiplier == -2) {
+                self.Band3Label.backgroundColor = [self.colourCodeGenObject.bandColourArray objectAtIndex:11];  // Silver Colour
+                self.bandTextLabel3.text = [self.colourCodeGenObject.bandTextArray objectAtIndex:11];   // Silver Text
+                
+            } else {
+                self.Band3Label.backgroundColor = [self.colourCodeGenObject.bandColourArray objectAtIndex:self.colourCodeGenObject.outputMultiplier]; // All other Cases
+                self.bandTextLabel3.text = [self.colourCodeGenObject.bandTextArray objectAtIndex:self.colourCodeGenObject.outputMultiplier]; // All other Cases
+            }
+            
+            
+            // Setting Band 4 Colour & Text
+            if (self.colourCodeGenObject.inputTolerance == 0) {
+                self.Band4Label.backgroundColor = [UIColor colorWithRed:0.76 green:0.80 blue:0.80 alpha:0.9];   // Silver Colour
+                self.bandTextLabel4.text = @"Silver";// Silver Text
+            } else {
+                self.Band4Label.backgroundColor = [UIColor colorWithRed:0.99 green:0.76 blue:0.0 alpha:0.9];    // Gold Colour
+                self.bandTextLabel4.text = @"Gold"; // Gold Text
+            }
+            
+            
+        } else { // Defining output label as Invalid Input when inputRValue is NOT ranging from 0.1 Ω to 1 GΩ
+            self.outputLabel.text = @"Invalid Input";
+            
+            // Clearing all band colours when inputRValue is NOT ranging from 0.1 Ω to 1 GΩ
+            self.Band1Label.backgroundColor = [UIColor clearColor];
+            self.Band2Label.backgroundColor = [UIColor clearColor];
+            self.Band3Label.backgroundColor = [UIColor clearColor];
+            self.Band4Label.backgroundColor = [UIColor clearColor];
+            self.bandTextLabel1.text = @" ";
+            self.bandTextLabel2.text = @" ";
+            self.bandTextLabel3.text = @" ";
+            self.bandTextLabel4.text = @" ";
+            
+            
+            // Display Alert if inputRValue when inputRValue is NOT ranging from 0.1 Ω to 1 GΩ
+            // Source: http://nshipster.com/uialertcontroller/
+            // ---------------------------------------------------------------------------------------
+            UIAlertController *textFieldLimitAlert = [UIAlertController alertControllerWithTitle:@"Invalid Input" message:@"Please enter resistor values ranging from 0.1 Ω to 1 GΩ." preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+            
+            [textFieldLimitAlert addAction:ok];
+            
+            [self presentViewController:textFieldLimitAlert animated:YES completion:nil];
+            // ---------------------------------------------------------------------------------------
+        }
     }
 }
-
 /*
  #pragma mark - Navigation
  
@@ -100,7 +196,7 @@
     if ([pickerView isEqual: self.tolerancePicker]) {
         return 2;   // tolerancePicker has 2 rows
     } else {
-        return 7;   // all other pickers have 7 rows
+        return 3;   // multiplierPicker has 3 rows
     }
 }
 
@@ -123,13 +219,11 @@
     if ([pickerView isEqual: self.tolerancePicker]) {
         if (row == 0) {
             pickerLabel.text = @"10% (E12)";
-            self.Band4Label.backgroundColor = [UIColor colorWithRed:0.76 green:0.80 blue:0.80 alpha:0.9];
         } else {
             pickerLabel.text = @"5% (E24)";
-            self.Band4Label.backgroundColor = [UIColor yellowColor];
         }
     } else {
-        pickerLabel.text = self.multiplierPrefix[row];
+        pickerLabel.text = self.multiplierArray[row];
     }
     return pickerLabel;
 }
@@ -138,12 +232,6 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     self.colourCodeGenObject.inputTolerance = (int)[self.tolerancePicker selectedRowInComponent:0];
     self.colourCodeGenObject.inputMultiplier = (int)[self.multiplierPicker selectedRowInComponent:0];
-    
-    
-    
-    
-    // Calling function to change Ohms Law Input Label
-    (void) [self setColourCodeGenOutputLabel];
 }
 
 
@@ -187,11 +275,10 @@
     // Hide Keyboard if Calculate Button Pressed
     [[self inputRTextField] resignFirstResponder];
     
-    
     // Assign User Input Values to Object Variables
     self.colourCodeGenObject.inputRValue = [self.inputRTextField.text doubleValue];
     
-    // Get Calculated Value from Object and display on Output Label
+    // Run calcNPVValue function in colourCodeGenObject and run setColourCodeGenOutputLabel method;
     (void) [[self colourCodeGenObject] calcNPVValue];
     (void) [self setColourCodeGenOutputLabel];
     
@@ -204,23 +291,6 @@
     NSLog(@"Band 3: %i", self.colourCodeGenObject.outputMultiplier);
     NSLog(@"Band 4: %i", self.colourCodeGenObject.inputTolerance);
     
-    
-    
-    self.Band1Label.backgroundColor = [self.colourCodeGenObject.bandColourArray objectAtIndex:self.colourCodeGenObject.firstSigDig];
-    self.Band2Label.backgroundColor = [self.colourCodeGenObject.bandColourArray objectAtIndex:self.colourCodeGenObject.secondSigDig];
-    self.Band3Label.backgroundColor = [self.colourCodeGenObject.bandColourArray objectAtIndex:self.colourCodeGenObject.outputMultiplier];
-    
-    
-   // self.Band4Label.backgroundColor = self.colourCodeGenObject.toleranceColourArray[self.colourCodeGenObject.inputTolerance];
-    
-    //[NSArray arrayWithObjects: [UIColor colorWithRed:0.76 green:0.80 blue:0.80 alpha:0.9], [UIColor yellowColor], [UIColor clearColor],nil];
-
-    
-   // if (self.colourCodeGenObject.inputTolerance == 0) {
-  //      self.Band4Label.backgroundColor = [UIColor /colorWithRed:0.76 green:0.80 blue:0.80 alpha:0.9];
-   // } else {
-  //      self.Band4Label.backgroundColor = [UIColor yellowColor];
-   // }
 }
 
 // Hide Keyboard when User touches outside Keyboard

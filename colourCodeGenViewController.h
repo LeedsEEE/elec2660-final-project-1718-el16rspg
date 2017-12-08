@@ -16,12 +16,20 @@
 @property (strong, nonatomic) IBOutlet UIPickerView *multiplierPicker;
 @property (strong, nonatomic) IBOutlet UIPickerView *tolerancePicker;
 @property (strong, nonatomic) IBOutlet UILabel *outputLabel;
-@property NSArray *multiplierPrefix;
+@property NSArray *multiplierArray;
 
 @property (strong, nonatomic) IBOutlet UILabel *Band1Label;
 @property (strong, nonatomic) IBOutlet UILabel *Band2Label;
 @property (strong, nonatomic) IBOutlet UILabel *Band3Label;
 @property (strong, nonatomic) IBOutlet UILabel *Band4Label;
+@property (strong, nonatomic) IBOutlet UILabel *bandTextLabel1;
+@property (strong, nonatomic) IBOutlet UILabel *bandTextLabel2;
+@property (strong, nonatomic) IBOutlet UILabel *bandTextLabel3;
+@property (strong, nonatomic) IBOutlet UILabel *bandTextLabel4;
+
+
+
+
 
 
 - (IBAction)CalcButtonPressed:(UIButton *)sender;
